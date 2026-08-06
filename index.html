@@ -480,10 +480,18 @@
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
           </div>
 
-          <!-- CARD 5: Sekine -->
+          <!-- CARD 5: Sekine (Usando Vídeo no Hover com sekinevideo.mp4) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model5')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
-              <img src="preview_sekine.jpg" data-gif="preview_sekine.gif" alt="Sekine" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" onmouseenter="this.src=this.dataset.gif" onmouseleave="this.src=this.dataset.gif.replace('.gif','.jpg')">
+              <video 
+                src="sekinevideo.mp4" 
+                muted 
+                loop 
+                playsinline 
+                class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                onmouseenter="this.play()" 
+                onmouseleave="this.pause(); this.currentTime = 0;"
+              ></video>
             </div>
             <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Sekine</h3>
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
