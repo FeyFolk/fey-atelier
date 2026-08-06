@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fey — Rigging Atelier</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            fey: {
+              bg: '#f8f6f8',
+              pink: '#f3a0d3',
+              purple: '#b882e6',
+              blue: '#92a1f0',
+              ink: '#1c1917',
+              darkFooter: '#110d18',
+              card: '#ffffff'
+            }
+          },
+          fontFamily: {
+            serif: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    body { 
+      background-color: #f8f6f8;
+      background-image: 
+        radial-gradient(circle at 20% 15%, rgba(243, 160, 211, 0.22) 0%, transparent 40%),
+        radial-gradient(circle at 80% 35%, rgba(146, 161, 240, 0.22) 0%, transparent 45%),
+        radial-gradient(circle at 50% 75%, rgba(184, 130, 230, 0.18) 0%, transparent 50%),
+        radial-gradient(rgba(28, 25, 23, 0.12) 1.5px, transparent 1.5px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 22px 22px;
+      background-attachment: fixed;
+      color: #1c1917; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+      overflow-x: hidden; 
+    }
+
+    .floating-header {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(184, 130, 230, 0.35);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(184, 130, 230, 0.12);
+    }
+
+    .fey-card { 
+      background: #ffffff; 
+      border: 1.5px solid rgba(184, 130, 230, 0.25); 
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(28, 25, 23, 0.04);
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+      user-select: none;
+    }
+    
+    .fey-card:hover { 
+      border-color: #b882e6; 
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 45px rgba(184, 130, 230, 0.25);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f3a0d3 0%, #b882e6 50%, #92a1f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-gradient {
+      background: linear-gradient(135deg, #f3a0d3 0%, #b882e6 50%, #92a1f0 100%);
+      color: #ffffff;
+      box-shadow: 3px 3px 0px #1c1917;
+      transition: all 0.15s ease;
+    }
+    .btn-gradient:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #1c1917;
+      opacity: 0.95;
+    }
+
+    .btn-outline {
+      background-color: #ffffff;
+      color: #1c1917;
+      border: 1.5px solid #1c1917;
+      box-shadow: 3px 3px 0px #1c1917;
+      transition: all 0.15s ease;
+    }
+    .btn-outline:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0px #b882e6;
+      border-color: #b882e6;
+    }
+
+    .slider-viewport {
+      overflow: hidden;
+      width: 100%;
+      position: relative;
+      cursor: grab;
+      padding-top: 10px;
+      padding-bottom: 25px;
+      touch-action: pan-y;
+    }
+    .slider-viewport.active {
+      cursor: grabbing;
+    }
+    .slider-track {
+      display: flex;
+      gap: 24px;
+      will-change: transform;
+      width: max-content;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .slider-viewport.active iframe {
+      pointer-events: none !important;
+    }
+
+    /* GLASSMORPHISM BACKDROP & DRAWER */
+    .glass-backdrop {
+      background: rgba(28, 25, 23, 0.35);
+      backdrop-filter: blur(8px);
+      transition: opacity 0.3s ease;
+    }
+
+    .glass-drawer {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(20px);
+      border-left: 1.5px solid rgba(184, 130, 230, 0.4);
+      box-shadow: -15px 0 40px rgba(28, 25, 23, 0.15);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .badge-tag {
+      background: rgba(184, 130, 230, 0.12);
+      border: 1px solid rgba(184, 130, 230, 0.35);
+      color: #7b32ab;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.25rem 0.75rem;
+      font-size: 0.7rem;
+      font-family: 'Fira Code', monospace;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+  </style>
+</head>
+<body class="relative min-h-screen selection:bg-fey-pink/30 selection:text-fey-ink">
+
+  <!-- FLOATING HEADER -->
+  <div class="fixed top-6 left-0 right-0 z-40 px-4 flex justify-center">
+    <header class="floating-header max-w-5xl w-full h-16 rounded-full px-6 flex items-center justify-between">
+      
+      <a href="index.html" class="flex items-center gap-3 group">
+        <img src="image.png" alt="fey logo" class="w-9 h-9 object-contain rounded-full border-2 border-fey-purple/40 bg-white p-0.5 shadow-sm group-hover:scale-105 transition" />
+        <div class="flex flex-col">
+          <span class="font-serif text-base tracking-widest uppercase font-bold text-fey-ink">Fey</span>
+          <span class="text-[9px] font-mono tracking-wider text-fey-ink/60 uppercase">Rigging Atelier</span>
+        </div>
+      </a>
+
+      <!-- NAVEGAÇÃO COM O BOTÃO HOME ATIVO -->
+      <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-fey-ink/80 font-medium">
+        <a href="index.html" class="hover:text-fey-purple transition font-bold text-fey-purple">Home</a>
+        <a href="gallery.html" class="hover:text-fey-purple transition">Gallery</a>
+        <a href="calculator.html" class="hover:text-fey-purple transition">Prices</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        
+        <!-- LANGUAGE TOGGLE DROPDOWN UI -->
+        <div class="relative group">
+          <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-fey-purple/30 text-xs font-mono font-semibold text-fey-ink hover:border-fey-purple transition">
+            <i class="fa-solid fa-globe text-fey-purple"></i>
+            <span>EN</span>
+            <i class="fa-solid fa-chevron-down text-[9px] text-fey-ink/60 ml-0.5"></i>
+          </button>
+          
+          <div class="absolute right-0 top-full mt-2 w-32 bg-white border border-fey-purple/30 rounded-2xl shadow-xl py-2 hidden group-hover:block transition z-50">
+            <a href="#" class="flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-purple font-bold bg-fey-pink/10">
+              <span class="text-xs">🇺🇸</span> English (EN)
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+              <span class="text-xs">🇪🇸</span> Español (ES)
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+              <span class="text-xs">🇯🇵</span> 日本語 (JA)
+            </a>
+            <a href="#" class="flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+              <span class="text-xs">🇨🇳</span> 中文 (ZH)
+            </a>
+          </div>
+        </div>
+
+        <a href="calculator.html" class="group px-4 py-2 rounded-full btn-gradient text-xs font-mono font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i> Prices
+        </a>
+      </div>
+
+    </header>
+  </div>
+
+  <div class="relative z-10 pt-32">
+
+    <!-- HERO SECTION -->
+    <section class="min-h-[70vh] flex items-center justify-center px-6 py-14 md:py-20 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+        
+        <!-- LADO ESQUERDO: SHOWCASE CIRCULAR COM VÍDEO EM AUTOPLAY -->
+        <div class="lg:col-span-5 flex flex-col items-center justify-center relative">
+          
+          <img src="raiders_ych_fey_live2d.png" alt="" class="w-24 h-24 object-contain absolute -top-12 z-20 drop-shadow-[0_8px_16px_rgba(184,130,230,0.3)] animate-bounce duration-[3500ms]" />
+
+          <div class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[400px] md:h-[400px] rounded-full border-2 border-dashed border-fey-purple/50 bg-white/80 p-3 flex items-center justify-center shadow-xl shadow-fey-purple/10">
+            
+            <div class="w-full h-full rounded-full bg-fey-bg overflow-hidden relative flex items-center justify-center border border-fey-purple/20">
+              <!-- VÍDEO MP4 / WEBM EM AUTOPLAY CONTINUO -->
+              <video 
+                src="showcase_video.mp4" 
+                autoplay 
+                loop 
+                muted 
+                playsinline 
+                class="w-full h-full object-cover object-center"
+              ></video>
+              
+              <div class="absolute bottom-4 px-4 py-1.5 bg-white/90 border border-fey-purple/30 rounded-full text-[11px] font-mono text-fey-ink pointer-events-none flex items-center gap-1.5 shadow-sm">
+                <i class="fa-solid fa-wand-magic-sparkles text-fey-purple"></i> Featured Model
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- LADO DIREITO: CARD DO RIGGER -->
+        <div class="lg:col-span-7">
+          <div class="fey-card p-8 md:p-10 relative">
+            
+            <div class="w-3.5 h-3.5 rounded-full bg-fey-purple shadow-md absolute -top-1.5 left-8"></div>
+
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-md bg-fey-pink/15 border border-fey-pink/40 text-fey-ink font-mono text-xs font-semibold mb-4">
+              <i class="fa-solid fa-wand-magic-sparkles text-fey-purple"></i> Welcome to my Atelier! ✦
+            </div>
+
+            <h1 class="font-serif text-3xl md:text-4xl font-bold text-fey-ink mb-4 leading-tight">
+              VTuber Rigger & <span class="gradient-text">Live2D Expert</span>
+            </h1>
+
+            <p class="text-fey-ink/80 text-sm font-normal leading-relaxed mb-8">
+              I make Vtubers, posed models, emotes and anything Live2D related!
+            </p>
+
+            <div class="flex flex-wrap items-center gap-3 mb-8">
+              <a href="calculator.html" class="group btn-gradient px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                Roll for Quote <i class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i>
+              </a>
+              <a href="gallery.html" class="btn-outline px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center gap-2">
+                Gallery <i class="fa-solid fa-book-bookmark"></i>
+              </a>
+            </div>
+
+            <div class="border-t border-fey-purple/15 pt-5 flex items-center gap-4 text-xs font-mono text-fey-ink/70">
+              <span>Find me here &rarr;</span>
+              <div class="flex items-center gap-2">
+                <a href="https://x.com/FeyLive2d" target="_blank" class="w-8 h-8 rounded-lg bg-fey-bg border border-fey-purple/20 flex items-center justify-center text-fey-ink hover:border-fey-purple transition" title="Twitter / X">
+                  <i class="fa-brands fa-x-twitter text-xs"></i>
+                </a>
+                <a href="https://www.twitch.tv/fey_live2d" target="_blank" class="w-8 h-8 rounded-lg bg-fey-bg border border-fey-purple/20 flex items-center justify-center text-fey-ink hover:border-fey-purple transition" title="Twitch">
+                  <i class="fa-brands fa-twitch text-xs text-fey-purple"></i>
+                </a>
+                <a href="https://vgen.co/fey" target="_blank" class="w-8 h-8 rounded-lg bg-fey-bg border border-fey-purple/20 flex items-center justify-center text-fey-ink hover:border-fey-purple transition" title="VGen Studio">
+                  <i class="fa-solid fa-gem text-xs"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CARROSSEL DA TWITCH (EM CIMA) -->
+    <div class="max-w-7xl mx-auto px-6 pt-10 pb-10" id="twitch-highlights">
+      
+      <div class="border-t border-fey-purple/30 w-full mb-10"></div>
+
+      <div class="mb-8 flex flex-row justify-between items-end">
+        <div>
+          <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Twitch Highlights</span>
+          <h2 class="font-serif text-2xl md:text-4xl text-fey-ink font-bold mt-1">Live Tracking & Stream Clips</h2>
+        </div>
+      </div>
+
+      <!-- VIEWPORT DO CARROSSEL DA TWITCH -->
+      <div id="twitchViewport" class="slider-viewport">
+        <div id="twitchTrack" class="slider-track">
+          
+          <!-- Twitch Clip Card 1 (DOBS_ART UPDATED) -->
+          <div class="fey-card p-4 w-[340px] sm:w-[380px] flex-shrink-0 flex flex-col">
+            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
+              <iframe src="https://clips.twitch.tv/embed?clip=HorribleObliqueAubergineDoritosChip-ejvjirtYj0V8GKiU&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full"></iframe>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-[10px] font-mono text-fey-purple font-bold uppercase">✦ Stream Showcase</span>
+                <span class="text-[10px] font-mono text-zinc-400">Model: Dobs</span>
+              </div>
+              <h3 class="font-serif text-base text-fey-ink font-bold">HorribleObliqueAubergineDoritosChip</h3>
+            </div>
+            <div class="pt-3 mt-3 border-t border-fey-purple/15 flex items-center justify-between text-xs font-mono text-zinc-600">
+              <span>Client: <strong class="text-fey-ink">@dobs_art</strong></span>
+              <span class="text-fey-purple font-bold">Twitch Highlight</span>
+            </div>
+          </div>
+
+          <!-- Twitch Clip Card 2 -->
+          <div class="fey-card p-4 w-[340px] sm:w-[380px] flex-shrink-0 flex flex-col">
+            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
+              <iframe src="https://clips.twitch.tv/embed?clip=PuzzledSavageSardineMau5-def456uvw&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full"></iframe>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-[10px] font-mono text-fey-purple font-bold uppercase">✦ Physics Test</span>
+                <span class="text-[10px] font-mono text-zinc-400">Model: Kaelen</span>
+              </div>
+              <h3 class="font-serif text-base text-fey-ink font-bold">Hair bounce and cape dynamics in VTube Studio</h3>
+            </div>
+            <div class="pt-3 mt-3 border-t border-fey-purple/15 flex items-center justify-between text-xs font-mono text-zinc-600">
+              <span>Client: <strong class="text-fey-ink">@forest_draws</strong></span>
+              <span class="text-fey-purple font-bold">Twitch Highlight</span>
+            </div>
+          </div>
+
+          <!-- Twitch Clip Card 3 -->
+          <div class="fey-card p-4 w-[340px] sm:w-[380px] flex-shrink-0 flex flex-col">
+            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
+              <iframe src="https://clips.twitch.tv/embed?clip=WittyCleverOysterOSsloth-ghi789rst&parent=localhost" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full"></iframe>
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-1">
+                <span class="text-[10px] font-mono text-fey-purple font-bold uppercase">✦ Toggles & Hand Tracking</span>
+                <span class="text-[10px] font-mono text-zinc-400">Model: Valeria</span>
+              </div>
+              <h3 class="font-serif text-base text-fey-ink font-bold">Demonstrating arm swaps and hand tracking reaction</h3>
+            </div>
+            <div class="pt-3 mt-3 border-t border-fey-purple/15 flex items-center justify-between text-xs font-mono text-zinc-600">
+              <span>Client: <strong class="text-fey-ink">@neko_art</strong></span>
+              <span class="text-fey-purple font-bold">Twitch Highlight</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CARROSSEL DE MODELOS (EMBAIXO - ABRE DRAWER LATERAL AO CLICAR) -->
+    <div class="max-w-7xl mx-auto px-6 pt-6 pb-28" id="portfolio">
+      
+      <div class="border-t border-fey-purple/30 w-full mb-10"></div>
+      
+      <!-- HEADER DO CARROSSEL -->
+      <div class="mb-8 flex flex-row justify-between items-end">
+        <div>
+          <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Interactive Gallery</span>
+          <h2 class="font-serif text-2xl md:text-4xl text-fey-ink font-bold mt-1">my beautiful kids</h2>
+        </div>
+        
+        <a href="gallery.html" class="group flex items-center gap-2 text-xs font-mono font-bold text-fey-ink hover:text-fey-purple transition bg-white/80 border border-fey-purple/30 hover:border-fey-purple px-4 py-2 rounded-xl shadow-sm">
+          <span>View All Gallery</span>
+          <i class="fa-solid fa-arrow-right text-fey-purple group-hover:translate-x-1 transition duration-200"></i>
+        </a>
+      </div>
+
+      <!-- VIEWPORT DO SLIDER -->
+      <div id="sliderViewport" class="slider-viewport">
+        <div id="sliderTrack" class="slider-track">
+          
+          <!-- CARD 1 -->
+          <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model1')">
+            <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+              <div class="text-center p-4">
+                <i class="fa-solid fa-wand-magic-sparkles text-3xl text-fey-purple mb-3 group-hover:scale-105 transition duration-300"></i>
+                <span class="block text-xs font-mono text-fey-ink/60 uppercase font-medium">Star Witch</span>
+              </div>
+            </div>
+            <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Astraea — Star Witch</h3>
+            <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • VBridger Ready</p>
+          </div>
+
+          <!-- CARD 2 -->
+          <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model2')">
+            <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+              <div class="text-center p-4">
+                <i class="fa-solid fa-sparkles text-3xl text-fey-purple mb-3 group-hover:scale-105 transition duration-300"></i>
+                <span class="block text-xs font-mono text-fey-ink/60 uppercase font-medium">Forest Paladin</span>
+              </div>
+            </div>
+            <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kaelen — Forest Paladin</h3>
+            <p class="text-xs text-fey-ink/70 mt-0.5">Half Body • Dual Hair Physics</p>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model3')">
+            <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+              <div class="text-center p-4">
+                <i class="fa-solid fa-cat text-3xl text-fey-purple mb-3 group-hover:scale-105 transition duration-300"></i>
+                <span class="block text-xs font-mono text-fey-ink/60 uppercase font-medium">Bouncy Alchemist</span>
+              </div>
+            </div>
+            <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Mimi — Bouncy Alchemist</h3>
+            <p class="text-xs text-fey-ink/70 mt-0.5">Chibi • Soft Physics</p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- DRAWER OVERLAY LATERAL EM GLASSMORPHISM -->
+  <div id="drawerBackdrop" onclick="closeModelDrawer()" class="fixed inset-0 z-50 glass-backdrop hidden opacity-0 flex justify-end">
+    
+    <!-- PAINEL LATERAL DESLIZANTE DA DIREITA -->
+    <div id="drawerPanel" onclick="event.stopPropagation()" class="glass-drawer w-full max-w-xl h-full overflow-y-auto p-6 md:p-8 space-y-6 transform translate-x-full">
+      
+      <!-- HEADER DO DRAWER COM BOTÃO FECHAR -->
+      <div class="flex items-center justify-between border-b border-fey-purple/20 pb-4">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-fey-purple animate-pulse"></span>
+          <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Model Details</span>
+        </div>
+        <button onclick="closeModelDrawer()" class="w-8 h-8 rounded-full bg-fey-purple/10 border border-fey-purple/30 text-fey-ink hover:bg-fey-purple hover:text-white transition flex items-center justify-center">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- VÍDEO DO MODELO -->
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black/90 border border-fey-purple/30 shadow-lg">
+        <iframe id="drawerVideo" class="w-full h-full" src="" title="Live2D Showcase Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+
+      <!-- TÍTULO E AUTOR DO MODELO -->
+      <div class="space-y-1">
+        <h2 id="drawerTitle" class="font-serif text-2xl font-bold text-fey-ink">Astraea — Star Witch</h2>
+        <p id="drawerArtist" class="text-xs font-mono text-fey-purple font-semibold">Artist / Illustrator: @star_illust</p>
+      </div>
+
+      <!-- TAGS DE SPECS / TIER / FEATURES -->
+      <div class="space-y-2">
+        <span class="text-xs font-mono text-fey-ink/60 uppercase font-semibold block">// Model Rigging Specs</span>
+        <div id="drawerBadges" class="flex flex-wrap gap-2">
+          <!-- Badges injetadas via JS -->
+        </div>
+      </div>
+
+      <!-- DESCRIÇÃO DETALHADA -->
+      <div class="space-y-2 border-t border-fey-purple/20 pt-4 text-xs font-mono text-fey-ink/80 leading-relaxed">
+        <span class="text-xs font-mono text-fey-ink/60 uppercase font-semibold block mb-1">// Rigging Highlights</span>
+        <p id="drawerDescription">
+          Full body Live2D rig featuring advanced physics for hair, long dress layering, and hat toggles. Equipped with complete VBridger mouth parameters for hyper-expressive streams.
+        </p>
+      </div>
+
+      <!-- AÇÃO DE CALL TO ACTION -->
+      <div class="pt-6 border-t border-fey-purple/20 flex flex-col sm:flex-row gap-3">
+        <a href="calculator.html" class="btn-gradient w-full py-3 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+          <span>Calculate Similar Rig</span>
+          <i class="fa-solid fa-dice-d20"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-fey-darkFooter text-white border-t border-fey-purple/30 py-10 text-center text-xs font-mono relative z-20">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-6">
+      <div class="text-zinc-400">&copy; 2026 fey_live2d. All Rights Reserved.</div>
+      <div class="flex items-center gap-6 text-base text-zinc-300">
+        <a href="https://x.com/FeyLive2d" target="_blank" class="hover:text-fey-pink transition"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://vgen.co/fey" target="_blank" class="hover:text-fey-pink transition"><i class="fa-solid fa-gem"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Configuração do Carrossel de Modelos (Embaixo)
+    const viewport = document.getElementById('sliderViewport');
+    const track = document.getElementById('sliderTrack');
+    
+    const originalCards = Array.from(track.children);
+    originalCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      track.appendChild(clone);
+    });
+
+    let currentX = 0;
+    const speed = 0.2;
+    let isHovered = false;
+    let isMouseDown = false;
+    let dragStartX = 0;
+    let dragStartPos = 0;
+    let isDragging = false;
+
+    function animate() {
+      if (!isHovered && !isMouseDown) {
+        currentX -= speed;
+      }
+
+      const halfWidth = track.scrollWidth / 2;
+
+      if (Math.abs(currentX) >= halfWidth) {
+        currentX += halfWidth;
+      } else if (currentX > 0) {
+        currentX -= halfWidth;
+      }
+
+      track.style.transform = `translate3d(${currentX}px, 0, 0)`;
+      requestAnimationFrame(animate);
+    }
+
+    requestAnimationFrame(animate);
+
+    viewport.addEventListener('mouseenter', () => isHovered = true);
+    viewport.addEventListener('mouseleave', () => {
+      isHovered = false;
+      isMouseDown = false;
+      viewport.classList.remove('active');
+    });
+
+    viewport.addEventListener('mousedown', (e) => {
+      isMouseDown = true;
+      isDragging = false;
+      viewport.classList.add('active');
+      dragStartX = e.clientX;
+      dragStartPos = currentX;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isMouseDown = false;
+      viewport.classList.remove('active');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isMouseDown) return;
+      const deltaX = e.clientX - dragStartX;
+      if (Math.abs(deltaX) > 4) {
+        isDragging = true;
+      }
+      currentX = dragStartPos + deltaX;
+    });
+
+    // SISTEMA DO DRAWER LATERAL (Painel do lado direito)
+    const galleryData = {
+      model1: {
+        title: "Astraea — Star Witch",
+        artist: "@star_illust",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body ($2,000)", "Complete VBridger", "Hand Tracking", "2 Outfits", "6 Toggles"],
+        description: "Full body Live2D rig featuring high-bounce hair physics, star-cloak motion, and full VBridger integration."
+      },
+      model2: {
+        title: "Kaelen — Forest Paladin",
+        artist: "@forest_draws",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Half Body ($1,500)", "iOS Mouth", "Arm Toggles", "Ears & Tail Physics"],
+        description: "Half body commission optimized for gaming streams with custom arm poses and animal ear physics."
+      },
+      model3: {
+        title: "Mimi — Bouncy Alchemist",
+        artist: "@chibi_maker",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Chibi Model ($1,200)", "Controller Toggle", "8 Expressions", "High Bounce Physics"],
+        description: "Compact chibi model designed for maximum cuteness with quick-toggle expressions."
+      }
+    };
+
+    function handleCardClick(event, modelId) {
+      if (isDragging) return;
+      openModelDrawer(modelId);
+    }
+
+    function openModelDrawer(modelId) {
+      const model = galleryData[modelId];
+      if (!model) return;
+
+      document.getElementById('drawerTitle').innerText = model.title;
+      document.getElementById('drawerArtist').innerText = `Artist / Illustrator: ${model.artist}`;
+      document.getElementById('drawerVideo').src = model.videoUrl;
+      document.getElementById('drawerDescription').innerText = model.description;
+
+      const badgesContainer = document.getElementById('drawerBadges');
+      badgesContainer.innerHTML = model.badges.map(b => `<span class="badge-tag">✦ ${b}</span>`).join('');
+
+      const backdrop = document.getElementById('drawerBackdrop');
+      const panel = document.getElementById('drawerPanel');
+
+      backdrop.classList.remove('hidden');
+      setTimeout(() => {
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('translate-x-full');
+      }, 10);
+    }
+
+    function closeModelDrawer() {
+      const backdrop = document.getElementById('drawerBackdrop');
+      const panel = document.getElementById('drawerPanel');
+
+      panel.classList.add('translate-x-full');
+      backdrop.classList.add('opacity-0');
+
+      setTimeout(() => {
+        backdrop.classList.add('hidden');
+        document.getElementById('drawerVideo').src = "";
+      }, 300);
+    }
+
+    // Configuração do Carrossel de Clips da Twitch (Em cima)
+    const twitchViewport = document.getElementById('twitchViewport');
+    const twitchTrack = document.getElementById('twitchTrack');
+
+    const originalTwitchCards = Array.from(twitchTrack.children);
+    originalTwitchCards.forEach(card => {
+      const clone = card.cloneNode(true);
+      twitchTrack.appendChild(clone);
+    });
+
+    let twitchCurrentX = 0;
+    const twitchSpeed = 0.2;
+    let twitchIsHovered = false;
+    let twitchIsMouseDown = false;
+    let twitchDragStartX = 0;
+    let twitchDragStartPos = 0;
+
+    function animateTwitch() {
+      if (!twitchIsHovered && !twitchIsMouseDown) {
+        twitchCurrentX -= twitchSpeed;
+      }
+
+      const twitchHalfWidth = twitchTrack.scrollWidth / 2;
+
+      if (Math.abs(twitchCurrentX) >= twitchHalfWidth) {
+        twitchCurrentX += twitchHalfWidth;
+      } else if (twitchCurrentX > 0) {
+        twitchCurrentX -= twitchHalfWidth;
+      }
+
+      twitchTrack.style.transform = `translate3d(${twitchCurrentX}px, 0, 0)`;
+      requestAnimationFrame(animateTwitch);
+    }
+
+    requestAnimationFrame(animateTwitch);
+
+    twitchViewport.addEventListener('mouseenter', () => twitchIsHovered = true);
+    twitchViewport.addEventListener('mouseleave', () => {
+      twitchIsHovered = false;
+      twitchIsMouseDown = false;
+      twitchViewport.classList.remove('active');
+    });
+
+    twitchViewport.addEventListener('mousedown', (e) => {
+      twitchIsMouseDown = true;
+      twitchViewport.classList.add('active');
+      twitchDragStartX = e.clientX;
+      twitchDragStartPos = twitchCurrentX;
+    });
+
+    window.addEventListener('mouseup', () => {
+      twitchIsMouseDown = false;
+      twitchViewport.classList.remove('active');
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!twitchIsMouseDown) return;
+      const deltaX = e.clientX - twitchDragStartX;
+      twitchCurrentX = twitchDragStartPos + deltaX;
+    });
+  </script>
+</body>
+</html>
