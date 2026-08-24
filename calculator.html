@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,22 +33,24 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
-    body { 
+    body {
       background-color: #f8f6f8;
-      background-image: 
+      background-image:
         radial-gradient(circle at 20% 15%, rgba(243, 160, 211, 0.22) 0%, transparent 40%),
         radial-gradient(circle at 80% 35%, rgba(146, 161, 240, 0.22) 0%, transparent 45%),
         radial-gradient(circle at 50% 75%, rgba(184, 130, 230, 0.18) 0%, transparent 50%),
         radial-gradient(rgba(28, 25, 23, 0.12) 1.5px, transparent 1.5px);
       background-size: 100% 100%, 100% 100%, 100% 100%, 22px 22px;
       background-attachment: fixed;
-      color: #1c1917; 
-      font-family: 'Plus Jakarta Sans', sans-serif; 
-      overflow-x: hidden; 
+      color: #1c1917;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
     }
 
     .floating-header {
@@ -57,12 +60,12 @@
       box-shadow: 0 8px 30px rgba(184, 130, 230, 0.12);
     }
 
-    .fey-card { 
-      background: #ffffff; 
-      border: 1.5px solid rgba(184, 130, 230, 0.25); 
+    .fey-card {
+      background: #ffffff;
+      border: 1.5px solid rgba(184, 130, 230, 0.25);
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(28, 25, 23, 0.04);
-      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .fey-card-option {
@@ -94,6 +97,7 @@
       box-shadow: 3px 3px 0px #1c1917;
       transition: all 0.15s ease;
     }
+
     .btn-gradient:hover {
       transform: translate(-1px, -1px);
       box-shadow: 4px 4px 0px #1c1917;
@@ -126,10 +130,19 @@
     }
 
     @keyframes spin-dice {
-      0% { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.3); }
-      100% { transform: rotate(360deg) scale(1); }
+      0% {
+        transform: rotate(0deg) scale(1);
+      }
+
+      50% {
+        transform: rotate(180deg) scale(1.3);
+      }
+
+      100% {
+        transform: rotate(360deg) scale(1);
+      }
     }
+
     .spinning-dice {
       animation: spin-dice 0.8s infinite linear;
     }
@@ -159,14 +172,16 @@
     }
   </style>
 </head>
+
 <body class="relative min-h-screen selection:bg-fey-pink/30 selection:text-fey-ink">
 
   <!-- FLOATING HEADER -->
   <div class="fixed top-6 left-0 right-0 z-40 px-4 flex justify-center">
     <header class="floating-header max-w-5xl w-full h-16 rounded-full px-6 flex items-center justify-between">
-      
+
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="image.png" alt="fey logo" class="w-9 h-9 object-contain rounded-full border-2 border-fey-purple/40 bg-white p-0.5 shadow-sm group-hover:scale-105 transition" />
+        <img src="image.png" alt="fey logo"
+          class="w-9 h-9 object-contain rounded-full border-2 border-fey-purple/40 bg-white p-0.5 shadow-sm group-hover:scale-105 transition" />
         <div class="flex flex-col">
           <span class="font-serif text-base tracking-widest uppercase font-bold text-fey-ink">Fey</span>
           <span class="text-[9px] font-mono tracking-wider text-fey-ink/60 uppercase">Rigging Atelier</span>
@@ -176,43 +191,45 @@
       <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-fey-ink/80 font-medium">
         <a href="index.html" data-i18n="nav_home" class="hover:text-fey-purple transition">Home</a>
         <a href="gallery.html" data-i18n="nav_gallery" class="hover:text-fey-purple transition">Gallery</a>
-        <a href="calculator.html" data-i18n="nav_prices" class="hover:text-fey-purple transition font-bold text-fey-purple">Prices</a>
+        <a href="calculator.html" data-i18n="nav_prices"
+          class="hover:text-fey-purple transition font-bold text-fey-purple">Prices</a>
       </nav>
 
       <div class="flex items-center gap-3">
         <!-- LANGUAGE TOGGLE DROPDOWN -->
         <div class="relative" id="langDropdownContainer">
-          <button 
-            type="button"
-            onclick="toggleLangDropdown(event)"
-            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-fey-purple/30 text-xs font-mono font-semibold text-fey-ink hover:border-fey-purple transition"
-          >
+          <button type="button" onclick="toggleLangDropdown(event)"
+            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-fey-purple/30 text-xs font-mono font-semibold text-fey-ink hover:border-fey-purple transition">
             <i class="fa-solid fa-globe text-fey-purple"></i>
             <span id="currentLang">EN</span>
             <i class="fa-solid fa-chevron-down text-[9px] text-fey-ink/60 ml-0.5"></i>
           </button>
-          
-          <div 
-            id="langMenu" 
-            class="absolute right-0 top-full mt-2 w-32 bg-white border border-fey-purple/30 rounded-2xl shadow-xl py-2 hidden transition z-50"
-          >
-            <button type="button" onclick="setLanguage('EN')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+
+          <div id="langMenu"
+            class="absolute right-0 top-full mt-2 w-32 bg-white border border-fey-purple/30 rounded-2xl shadow-xl py-2 hidden transition z-50">
+            <button type="button" onclick="setLanguage('EN')"
+              class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
               <span class="text-xs">🇺🇸</span> English (EN)
             </button>
-            <button type="button" onclick="setLanguage('ES')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+            <button type="button" onclick="setLanguage('ES')"
+              class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
               <span class="text-xs">🇪🇸</span> Español (ES)
             </button>
-            <button type="button" onclick="setLanguage('JA')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+            <button type="button" onclick="setLanguage('JA')"
+              class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
               <span class="text-xs">🇯🇵</span> 日本語 (JA)
             </button>
-            <button type="button" onclick="setLanguage('ZH')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
+            <button type="button" onclick="setLanguage('ZH')"
+              class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
               <span class="text-xs">🇨🇳</span> 中文 (ZH)
             </button>
           </div>
         </div>
 
-        <a href="calculator.html" class="group px-4 py-2 rounded-full btn-gradient text-xs font-mono font-semibold transition flex items-center gap-1.5">
-          <i class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i> <span data-i18n="btn_prices">Prices</span>
+        <a href="calculator.html"
+          class="group px-4 py-2 rounded-full btn-gradient text-xs font-mono font-semibold transition flex items-center gap-1.5">
+          <i class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i> <span
+            data-i18n="btn_prices">Prices</span>
         </a>
       </div>
 
@@ -221,16 +238,18 @@
 
   <!-- CONTAINER CENTRALIZADO DA CALCULADORA -->
   <div class="relative z-10 pt-32 pb-24 max-w-4xl mx-auto px-4 space-y-12">
-    
+
     <!-- PARTE 1: CALCULADORA DE PREÇO -->
     <section class="fey-card p-6 md:p-10 relative">
       <div class="border-b border-fey-purple/20 pb-6 mb-8">
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
           <div>
-            <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Step 1: Price Estimate</span>
+            <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Step 1: Price
+              Estimate</span>
             <h1 class="font-serif text-2xl md:text-3xl font-bold text-fey-ink mt-1">LIVE2D PRICE CALCULATOR</h1>
           </div>
-          <div class="px-3.5 py-1.5 rounded-full bg-fey-purple/15 border border-fey-purple/40 text-xs font-mono font-semibold text-fey-ink">
+          <div
+            class="px-3.5 py-1.5 rounded-full bg-fey-purple/15 border border-fey-purple/40 text-xs font-mono font-semibold text-fey-ink">
             Status: <span class="text-fey-purple font-bold">Commissions Open ✦</span>
           </div>
         </div>
@@ -243,57 +262,51 @@
         </h3>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          <div 
-            onclick="selectTier('full', 2000)" 
-            id="tier-full" 
+          <div onclick="selectTier('full', 2000)" id="tier-full"
             class="fey-card-option fey-card-active p-5 cursor-pointer flex flex-col justify-between"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Full Body Rig', 'Complete tracking: Head XYZ, Body XYZ, Legs, Feet & Full Physics.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div>
               <div class="flex justify-between items-center mb-2">
                 <span class="font-serif font-bold text-fey-ink text-sm">Full Body</span>
                 <span class="font-mono text-xs font-bold text-fey-purple">$2,000</span>
               </div>
-              <p class="text-xs text-fey-ink/70 leading-relaxed mb-4">Complete tracking: Head XYZ, Body XYZ, Legs, Feet & Full Physics.</p>
+              <p class="text-xs text-fey-ink/70 leading-relaxed mb-4">Complete tracking: Head XYZ, Body XYZ, Legs, Feet
+                & Full Physics.</p>
             </div>
             <div class="text-xs font-mono font-bold text-fey-purple flex items-center gap-1.5">
               <i class="fa-solid fa-circle-check"></i> Selected
             </div>
           </div>
 
-          <div 
-            onclick="selectTier('half', 1500)" 
-            id="tier-half" 
+          <div onclick="selectTier('half', 1500)" id="tier-half"
             class="fey-card-option p-5 cursor-pointer flex flex-col justify-between"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Half Body Rig', 'Head XYZ, Torso XYZ, Arms, Hair Physics & Waist Motion.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div>
               <div class="flex justify-between items-center mb-2">
                 <span class="font-serif font-bold text-fey-ink text-sm">Half Body</span>
                 <span class="font-mono text-xs font-bold text-fey-purple">$1,500</span>
               </div>
-              <p class="text-xs text-fey-ink/70 leading-relaxed mb-4">Head XYZ, Torso XYZ, Arms, Hair Physics & Waist Motion.</p>
+              <p class="text-xs text-fey-ink/70 leading-relaxed mb-4">Head XYZ, Torso XYZ, Arms, Hair Physics & Waist
+                Motion.</p>
             </div>
             <div class="text-xs font-mono text-fey-ink/40 flex items-center gap-1.5">
               <i class="fa-regular fa-circle"></i> Select
             </div>
           </div>
 
-          <div 
-            onclick="selectTier('chibi', 1200)" 
-            id="tier-chibi" 
+          <div onclick="selectTier('chibi', 1200)" id="tier-chibi"
             class="fey-card-option p-5 cursor-pointer flex flex-col justify-between"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Chibi Model Rig', 'Compact model: High bounce, Head XYZ & Expressive Physics.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div>
               <div class="flex justify-between items-center mb-2">
                 <span class="font-serif font-bold text-fey-ink text-sm">Chibi Model</span>
                 <span class="font-mono text-xs font-bold text-fey-purple">$1,200</span>
               </div>
-              <p class="text-xs text-fey-ink/70 leading-relaxed mb-4">Compact model: High bounce, Head XYZ & Expressive Physics.</p>
+              <p class="text-xs text-fey-ink/70 leading-relaxed mb-4">Compact model: High bounce, Head XYZ & Expressive
+                Physics.</p>
             </div>
             <div class="text-xs font-mono text-fey-ink/40 flex items-center gap-1.5">
               <i class="fa-regular fa-circle"></i> Select
@@ -308,10 +321,12 @@
           <label for="complexitySlider" class="font-serif text-sm font-bold text-fey-ink flex items-center gap-2">
             <i class="fa-solid fa-sliders text-fey-purple"></i> Design Complexity Level
           </label>
-          <span class="font-mono text-xs font-bold text-fey-purple">Level <span id="complexityVal">1</span> (+$<span id="complexityCost">0</span> USD)</span>
+          <span class="font-mono text-xs font-bold text-fey-purple">Level <span id="complexityVal">1</span> (+$<span
+              id="complexityCost">0</span> USD)</span>
         </div>
         <p class="text-[11px] text-fey-ink/60 mb-3">+ $100 USD per complexity level beyond Level 1.</p>
-        <input type="range" id="complexitySlider" min="1" max="5" value="1" oninput="calculateTotal()" class="w-full h-2 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+        <input type="range" id="complexitySlider" min="1" max="5" value="1" oninput="calculateTotal()"
+          class="w-full h-2 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
         <div class="flex justify-between text-[10px] font-mono text-fey-ink/50 mt-1">
           <span>Level 1 (Standard)</span>
           <span>Level 2</span>
@@ -329,25 +344,23 @@
         <p class="text-[11px] text-fey-ink/60 mb-3">(Face ID Tracking Required — Art asset must be provided)</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <label 
-            class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
+          <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Cheek Puff Add-on', 'Cheek puff parameter triggers for iOS Face ID tracking.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="15" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="15" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <span class="font-serif text-xs font-bold text-fey-ink">Cheek Puff</span>
             </div>
             <span class="font-mono text-xs font-bold text-fey-purple">+$15+ USD</span>
           </label>
 
-          <label 
-            class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
+          <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Tongue Out Add-on', 'Dynamic tongue tracking and physics for expressive mouth animation.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="80" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="80" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <span class="font-serif text-xs font-bold text-fey-ink">Tongue Out</span>
             </div>
             <span class="font-mono text-xs font-bold text-fey-purple">+$80+ USD</span>
@@ -363,13 +376,12 @@
         <p class="text-[11px] text-fey-ink/60 mb-3">(VBridger app required — Select one or none)</p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <label 
-            class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
+          <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'VBridger Mouth', 'Shrug, Pucker/Widen, Funnel, Lip Press/Open, Jaw Open tracking.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div class="flex items-center gap-3">
-              <input type="radio" name="vbridger_calc" value="250" onchange="calculateTotal()" class="w-4 h-4 accent-fey-purple" />
+              <input type="radio" name="vbridger_calc" value="250" onchange="calculateTotal()"
+                class="w-4 h-4 accent-fey-purple" />
               <div>
                 <span class="block font-serif text-xs font-bold text-fey-ink">VBridger Mouth</span>
                 <span class="text-[10px] text-fey-ink/60">Shrug, Pucker/Widen, Funnel, Lip Press/Open, Jaw Open</span>
@@ -378,13 +390,12 @@
             <span class="font-mono text-xs font-bold text-fey-purple">+$250+</span>
           </label>
 
-          <label 
-            class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
+          <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Complete VBridger', 'Eyebrow Inner/Outer Up/Down, Eye Squint, Sniffa & Full Mouth tracking.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div class="flex items-center gap-3">
-              <input type="radio" name="vbridger_calc" value="400" onchange="calculateTotal()" class="w-4 h-4 accent-fey-purple" />
+              <input type="radio" name="vbridger_calc" value="400" onchange="calculateTotal()"
+                class="w-4 h-4 accent-fey-purple" />
               <div>
                 <span class="block font-serif text-xs font-bold text-fey-ink">Complete VBridger</span>
                 <span class="text-[10px] text-fey-ink/60">Eyebrow Inner/Outer Up/Down, Eye Squint, Sniffa & Mouth</span>
@@ -394,7 +405,9 @@
           </label>
         </div>
         <div class="mt-2 text-right">
-          <button type="button" onclick="clearVbridgerCalc()" class="text-[10px] font-mono text-fey-purple underline hover:text-fey-pink transition">Clear VBridger Selection</button>
+          <button type="button" onclick="clearVbridgerCalc()"
+            class="text-[10px] font-mono text-fey-purple underline hover:text-fey-pink transition">Clear VBridger
+            Selection</button>
         </div>
       </div>
 
@@ -406,65 +419,77 @@
 
         <!-- SLIDERS QUANTITATIVOS -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-          
+
           <!-- Expressions (0-10) -->
           <div class="fey-card-option p-4">
             <div class="flex justify-between items-center mb-1">
               <span class="font-serif text-xs font-bold text-fey-ink">Expressions ($40 each)</span>
-              <span class="font-mono text-xs font-bold text-fey-purple"><span id="expQty">0</span> / 10 (+$<span id="expCost">0</span>)</span>
+              <span class="font-mono text-xs font-bold text-fey-purple"><span id="expQty">0</span> / 10 (+$<span
+                  id="expCost">0</span>)</span>
             </div>
             <p class="text-[10px] text-fey-ink/60 mb-2">Blush, tears, sweat, etc.</p>
-            <input type="range" id="sliderExp" min="0" max="10" value="0" oninput="calculateTotal()" class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+            <input type="range" id="sliderExp" min="0" max="10" value="0" oninput="calculateTotal()"
+              class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
           </div>
 
           <!-- Toggles (0-10) -->
           <div class="fey-card-option p-4">
             <div class="flex justify-between items-center mb-1">
               <span class="font-serif text-xs font-bold text-fey-ink">Toggles ($15 each)</span>
-              <span class="font-mono text-xs font-bold text-fey-purple"><span id="togQty">0</span> / 10 (+$<span id="togCost">0</span>)</span>
+              <span class="font-mono text-xs font-bold text-fey-purple"><span id="togQty">0</span> / 10 (+$<span
+                  id="togCost">0</span>)</span>
             </div>
             <p class="text-[10px] text-fey-ink/60 mb-2">Glasses, jackets, recolors, etc.</p>
-            <input type="range" id="sliderTog" min="0" max="10" value="0" oninput="calculateTotal()" class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+            <input type="range" id="sliderTog" min="0" max="10" value="0" oninput="calculateTotal()"
+              class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
           </div>
 
           <!-- Animations (0-10) -->
           <div class="fey-card-option p-4">
             <div class="flex justify-between items-center mb-1">
               <span class="font-serif text-xs font-bold text-fey-ink">Animations ($50 each)</span>
-              <span class="font-mono text-xs font-bold text-fey-purple"><span id="animQty">0</span> / 10 (+$<span id="animCost">0</span>)</span>
+              <span class="font-mono text-xs font-bold text-fey-purple"><span id="animQty">0</span> / 10 (+$<span
+                  id="animCost">0</span>)</span>
             </div>
             <p class="text-[10px] text-fey-ink/60 mb-2">Falling tears, waving, idle loops, etc.</p>
-            <input type="range" id="sliderAnim" min="0" max="10" value="0" oninput="calculateTotal()" class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+            <input type="range" id="sliderAnim" min="0" max="10" value="0" oninput="calculateTotal()"
+              class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
           </div>
 
           <!-- Additional Hairstyles (0-3) -->
           <div class="fey-card-option p-4">
             <div class="flex justify-between items-center mb-1">
               <span class="font-serif text-xs font-bold text-fey-ink">Additional Hairstyles ($200 each)</span>
-              <span class="font-mono text-xs font-bold text-fey-purple"><span id="hairQty">0</span> / 3 (+$<span id="hairCost">0</span>)</span>
+              <span class="font-mono text-xs font-bold text-fey-purple"><span id="hairQty">0</span> / 3 (+$<span
+                  id="hairCost">0</span>)</span>
             </div>
             <p class="text-[10px] text-fey-ink/60 mb-2">Full additional set of average-complexity hair.</p>
-            <input type="range" id="sliderHair" min="0" max="3" value="0" oninput="calculateTotal()" class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+            <input type="range" id="sliderHair" min="0" max="3" value="0" oninput="calculateTotal()"
+              class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
           </div>
 
           <!-- Arm Toggles ($100 each, 0-3) -->
           <div class="fey-card-option p-4">
             <div class="flex justify-between items-center mb-1">
               <span class="font-serif text-xs font-bold text-fey-ink">Arm Toggles ($100 each)</span>
-              <span class="font-mono text-xs font-bold text-fey-purple"><span id="armQty">0</span> / 3 (+$<span id="armCost">0</span>)</span>
+              <span class="font-mono text-xs font-bold text-fey-purple"><span id="armQty">0</span> / 3 (+$<span
+                  id="armCost">0</span>)</span>
             </div>
             <p class="text-[10px] text-fey-ink/60 mb-2">Alternate arm poses/swaps.</p>
-            <input type="range" id="sliderArm" min="0" max="3" value="0" oninput="calculateTotal()" class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+            <input type="range" id="sliderArm" min="0" max="3" value="0" oninput="calculateTotal()"
+              class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
           </div>
 
           <!-- Additional Outfits (0-3) -->
           <div class="fey-card-option p-4">
             <div class="flex justify-between items-center mb-1">
               <span class="font-serif text-xs font-bold text-fey-ink">Additional Outfits ($200 each)</span>
-              <span class="font-mono text-xs font-bold text-fey-purple"><span id="outfitQty">0</span> / 3 (+$<span id="outfitCost">0</span>)</span>
+              <span class="font-mono text-xs font-bold text-fey-purple"><span id="outfitQty">0</span> / 3 (+$<span
+                  id="outfitCost">0</span>)</span>
             </div>
             <p class="text-[10px] text-fey-ink/60 mb-2">Price depends on difference from default.</p>
-            <input type="range" id="sliderOutfit" min="0" max="3" value="0" oninput="calculateTotal()" class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
+            <input type="range" id="sliderOutfit" min="0" max="3" value="0" oninput="calculateTotal()"
+              class="w-full h-1.5 bg-fey-purple/20 rounded-lg appearance-none cursor-pointer" />
           </div>
 
         </div>
@@ -473,7 +498,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="100" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="100" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <div>
                 <span class="block font-serif text-xs font-bold text-fey-ink">Non-Human Parts</span>
                 <span class="text-[10px] text-fey-ink/60">Ears, Horns, Wings, Tails, etc.</span>
@@ -484,10 +510,12 @@
 
           <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="100" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="100" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <div>
                 <span class="block font-serif text-xs font-bold text-fey-ink">Alternative Mouth Toggle</span>
-                <span class="text-[10px] text-fey-ink/60">Fully alternative mouth set for toggles (angry, sad, etc)</span>
+                <span class="text-[10px] text-fey-ink/60">Fully alternative mouth set for toggles (angry, sad,
+                  etc)</span>
               </div>
             </div>
             <span class="font-mono text-xs font-bold text-fey-purple">+$100+</span>
@@ -495,7 +523,8 @@
 
           <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="250" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="250" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <span class="font-serif text-xs font-bold text-fey-ink">Controller Toggle</span>
             </div>
             <span class="font-mono text-xs font-bold text-fey-purple">+$250</span>
@@ -503,7 +532,8 @@
 
           <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="200" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="200" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <span class="font-serif text-xs font-bold text-fey-ink">Hands on Hips</span>
             </div>
             <span class="font-mono text-xs font-bold text-fey-purple">+$200</span>
@@ -511,19 +541,19 @@
 
           <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="50" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="50" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <span class="font-serif text-xs font-bold text-fey-ink">Extra Cutting</span>
             </div>
             <span class="font-mono text-xs font-bold text-fey-purple">+$50</span>
           </label>
 
-          <label 
-            class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
+          <label class="fey-card-option p-4 flex items-center justify-between cursor-pointer"
             onmouseenter="showPreview('https://www.w3schools.com/html/mov_bbb.mp4', 'Hand Tracking Physics', 'Real-time camera hand tracking and arm pose reaction.')"
-            onmouseleave="hidePreview()"
-          >
+            onmouseleave="hidePreview()">
             <div class="flex items-center gap-3">
-              <input type="checkbox" data-price="500" onchange="calculateTotal()" class="calc-addon w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" data-price="500" onchange="calculateTotal()"
+                class="calc-addon w-4 h-4 accent-fey-purple" />
               <div>
                 <span class="block font-serif text-xs font-bold text-fey-ink">Hand Tracking</span>
                 <span class="text-[10px] text-fey-ink/60">Dedicated camera required</span>
@@ -545,7 +575,8 @@
             <input type="checkbox" id="ndaCheckbox" onchange="calculateTotal()" class="w-4 h-4 accent-fey-purple" />
             <div>
               <span class="block font-serif text-xs font-bold text-fey-ink">Non-Disclosure Agreement (NDA)</span>
-              <span class="text-[10px] text-fey-ink/70">Keeps your commission private until debut (+30% fee applied to total)</span>
+              <span class="text-[10px] text-fey-ink/70">Keeps your commission private until debut (+30% fee applied to
+                total)</span>
             </div>
           </div>
           <span class="font-mono text-xs font-bold text-fey-purple">+30%</span>
@@ -557,13 +588,15 @@
         <div class="flex items-center justify-between">
           <span class="text-xs font-mono uppercase tracking-widest text-fey-ink/70 font-semibold">Estimated Total</span>
           <div class="font-serif text-3xl font-bold text-fey-ink">
-            <span id="finalPrice" class="gradient-text">$2,000</span> <span class="text-xs font-mono font-normal text-fey-ink/50">USD</span>
+            <span id="finalPrice" class="gradient-text">$2,000</span> <span
+              class="text-xs font-mono font-normal text-fey-ink/50">USD</span>
           </div>
         </div>
 
         <p class="text-[11px] font-mono text-fey-ink/60 pt-2 border-t border-fey-purple/15 text-center leading-relaxed">
           <i class="fa-solid fa-circle-info text-fey-purple mr-1"></i>
-          <strong>Disclaimer:</strong> All figures above are rough estimates. The final commission price will be officially confirmed after reviewing your model's <code>.psd</code> file and overall project scope.
+          <strong>Disclaimer:</strong> All figures above are rough estimates. The final commission price will be
+          officially confirmed after reviewing your model's <code>.psd</code> file and overall project scope.
         </p>
       </div>
     </section>
@@ -571,93 +604,120 @@
     <!-- PARTE 2: FORMULÁRIO COMPLETO -->
     <section class="fey-card p-6 md:p-10 relative">
       <div class="border-b border-fey-purple/20 pb-6 mb-8">
-        <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Step 2: Application</span>
+        <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Step 2:
+          Application</span>
         <h2 class="font-serif text-2xl md:text-3xl font-bold text-fey-ink mt-1">Commission Application Form</h2>
-        <p class="text-xs text-fey-ink/70 mt-1">Please fill out all details below to submit your commission request directly to fey_live2d.</p>
+        <p class="text-xs text-fey-ink/70 mt-1">Please fill out all details below to submit your commission request
+          directly to fey_live2d.</p>
       </div>
 
       <!-- TELA DE CONFIRMAÇÃO DE ENVIADO -->
       <div id="successMessage" class="hidden py-12 px-6 text-center space-y-4">
-        <div class="w-16 h-16 mx-auto rounded-full bg-fey-purple/20 border-2 border-fey-purple/40 flex items-center justify-center text-fey-purple text-2xl shadow-inner">
+        <div
+          class="w-16 h-16 mx-auto rounded-full bg-fey-purple/20 border-2 border-fey-purple/40 flex items-center justify-center text-fey-purple text-2xl shadow-inner">
           <i class="fa-solid fa-dice-d20"></i>
         </div>
         <h3 class="font-serif text-2xl font-bold text-fey-ink">Your application was delivered! ✦</h3>
         <p class="text-xs font-mono text-fey-ink/70 max-w-md mx-auto leading-relaxed">
-          Thank you for rolling your commission request! All details have been sent to <strong>fey2folk@gmail.com</strong>.
+          Thank you for rolling your commission request! All details have been sent to
+          <strong>fey2folk@gmail.com</strong>.
         </p>
         <p class="text-xs font-mono text-fey-purple font-semibold pt-2">
           Please contact me on Twitter (@FeyLive2d) or Discord (feyfolk) to follow up! ♥
         </p>
       </div>
 
-      <form id="commissionForm" action="https://formsubmit.co/fey2folk@gmail.com" method="POST" class="space-y-6 text-xs font-mono" novalidate>
-        
+      <form id="commissionForm" action="https://formsubmit.co/ajax/fey2folk@gmail.com" method="POST"
+        class="space-y-6 text-xs font-mono" novalidate>
+
         <!-- CONFIGS OCULTAS FORMSUBMIT -->
         <input type="hidden" name="_subject" value="✦ New Live2D Commission Application!" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" id="hidden_selected_tier" name="Selected Rig Tier" value="Full Body ($2,000)" />
         <input type="hidden" id="hidden_estimated_total" name="Calculated Estimate" value="$2,000 USD" />
+        <input type="hidden" name="_ajax" value="true">
+        <input type="hidden" name="_captcha" value="false">
 
         <!-- PREFERRED NAME & EMAIL -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="field-wrapper">
             <label class="block font-semibold text-fey-ink/80 mb-1.5">Preferred Name</label>
-            <input type="text" name="Preferred Name" data-required="true" placeholder="What should I call you?" class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-            <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+            <input type="text" name="Preferred Name" data-required="true" placeholder="What should I call you?"
+              class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+            <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to
+              submit your application</span>
           </div>
           <div class="field-wrapper">
             <label class="block font-semibold text-fey-ink/80 mb-1.5">Email Address</label>
-            <input type="email" name="email" data-required="true" placeholder="your.name@email.com" class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-            <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address</span>
+            <input type="email" name="email" data-required="true" placeholder="your.name@email.com"
+              class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+            <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email
+              address</span>
           </div>
         </div>
 
         <!-- PRONOME -->
         <div class="field-wrapper">
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Pronouns</label>
-          <input type="text" name="Pronouns" data-required="true" placeholder="e.g. she/her, they/them, he/him" class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <input type="text" name="Pronouns" data-required="true" placeholder="e.g. she/her, they/them, he/him"
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- SOCIALS -->
         <div class="field-wrapper">
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Socials (Twitter, Discord, Twitch, etc.)</label>
-          <input type="text" name="Social Handles" data-required="true" placeholder="@yourhandle / Discord tag" class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <input type="text" name="Social Handles" data-required="true" placeholder="@yourhandle / Discord tag"
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- TERMO 18+ -->
         <div class="field-wrapper p-4 bg-fey-bg rounded-xl border border-fey-purple/20 checkbox-card-border">
           <label class="flex items-center gap-3 cursor-pointer font-semibold text-fey-ink">
-            <input type="checkbox" name="Age Confirmation (18+)" value="Confirmed 18+" data-required="true" class="w-4 h-4 accent-fey-purple" />
+            <input type="checkbox" name="Age Confirmation (18+)" value="Confirmed 18+" data-required="true"
+              class="w-4 h-4 accent-fey-purple" />
             <span>You must be over 18 to apply for a commission.</span>
           </label>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> You must confirm you are over 18 to proceed</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> You must confirm you are over 18
+            to proceed</span>
         </div>
 
         <!-- TERMO NO NFT / AI -->
         <div class="field-wrapper p-4 bg-fey-bg rounded-xl border border-fey-purple/20 checkbox-card-border">
           <label class="flex items-center gap-3 cursor-pointer font-semibold text-fey-ink">
-            <input type="checkbox" name="NFT & AI Terms Agreed" value="Agreed (No NFT/AI)" data-required="true" class="w-4 h-4 accent-fey-purple" />
-            <span>Clients are not permitted to use any part of their commissioned rig for non-fungible tokens (NFTs) or AI.</span>
+            <input type="checkbox" name="NFT & AI Terms Agreed" value="Agreed (No NFT/AI)" data-required="true"
+              class="w-4 h-4 accent-fey-purple" />
+            <span>Clients are not permitted to use any part of their commissioned rig for non-fungible tokens (NFTs) or
+              AI.</span>
           </label>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> You must agree to the NFT/AI terms to proceed</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> You must agree to the NFT/AI
+            terms to proceed</span>
         </div>
 
         <!-- PROJECT DETAILS -->
         <div class="field-wrapper">
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Project Details</label>
           <p class="text-[11px] text-fey-ink/60 mb-2">Include a brief overview detailing what you're looking for.</p>
-          <textarea name="Project Details" data-required="true" rows="3" placeholder="Describe your overall vision for the Live2D model..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <textarea name="Project Details" data-required="true" rows="3"
+            placeholder="Describe your overall vision for the Live2D model..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- BUDGET & PAYMENT PLAN -->
         <div class="field-wrapper">
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Budget & Payment Plan</label>
-          <p class="text-[11px] text-fey-ink/60 mb-2">Please include if any. If a payment plan is desired, please state your ideal payment plan schedule (i.e. 2 payments, flat amount every x days/weeks/months, etc.)</p>
-          <textarea name="Budget and Payment Plan" data-required="true" rows="2" placeholder="e.g. Budget $2,000, preferred 2 payments (50% deposit / 50% completion)..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <p class="text-[11px] text-fey-ink/60 mb-2">Please include if any. If a payment plan is desired, please state
+            your ideal payment plan schedule (i.e. 2 payments, flat amount every x days/weeks/months, etc.)</p>
+          <textarea name="Budget and Payment Plan" data-required="true" rows="2"
+            placeholder="e.g. Budget $2,000, preferred 2 payments (50% deposit / 50% completion)..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- PERGUNTA NDA NO FORMULÁRIO -->
@@ -673,22 +733,28 @@
               <span>No</span>
             </label>
           </div>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select one option to proceed</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select one option to
+            proceed</span>
         </div>
 
         <!-- DEADLINE -->
         <div>
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Do you have a deadline?</label>
-          <p class="text-[11px] text-fey-ink/60 mb-2">(Short deadlines may require rush fee). Leave blank if no deadline.</p>
-          <input type="text" name="Deadline" placeholder="e.g. October 31st / Debut date" class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+          <p class="text-[11px] text-fey-ink/60 mb-2">(Short deadlines may require rush fee). Leave blank if no
+            deadline.</p>
+          <input type="text" name="Deadline" placeholder="e.g. October 31st / Debut date"
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
         </div>
 
         <!-- ARTIST / DESIGN LINK -->
         <div class="field-wrapper">
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Link to Artist / Design</label>
           <p class="text-[11px] text-fey-ink/60 mb-2">(If they are different, please link both)</p>
-          <input type="text" name="Link to Artist or Design" data-required="true" placeholder="https://twitter.com/artist_handle" class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <input type="text" name="Link to Artist or Design" data-required="true"
+            placeholder="https://twitter.com/artist_handle"
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- RIG-READY PSD -->
@@ -704,12 +770,14 @@
               <span>No</span>
             </label>
           </div>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select one option to proceed</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select one option to
+            proceed</span>
         </div>
 
         <!-- TRACKING METHOD -->
         <div class="field-wrapper" data-checkbox-group="tracking">
-          <label class="block font-semibold text-fey-ink/80 mb-2">Which tracking method do you plan to use? (Select all that apply)</label>
+          <label class="block font-semibold text-fey-ink/80 mb-2">Which tracking method do you plan to use? (Select all
+            that apply)</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <label class="fey-card-option p-3 flex items-center gap-3 cursor-pointer">
               <input type="checkbox" name="tracking" value="iOS (VTube Studio)" class="w-4 h-4 accent-fey-purple" />
@@ -724,16 +792,19 @@
               <span class="font-semibold text-fey-ink">Webcam</span>
             </label>
             <label class="fey-card-option p-3 flex items-center gap-3 cursor-pointer">
-              <input type="checkbox" name="tracking" value="Webcam with NVIDIA tracking" class="w-4 h-4 accent-fey-purple" />
+              <input type="checkbox" name="tracking" value="Webcam with NVIDIA tracking"
+                class="w-4 h-4 accent-fey-purple" />
               <span class="font-semibold text-fey-ink">Webcam with NVIDIA Tracking</span>
             </label>
           </div>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select at least one tracking method</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select at least one
+            tracking method</span>
         </div>
 
         <!-- PLAN TO USE VBRIDGER -->
         <div class="field-wrapper" data-radio-group="use_vbridger">
-          <label class="block font-semibold text-fey-ink/80 mb-2">Do you plan to use VBridger? (For iOS and NVIDIA Broadcast Tracker only)</label>
+          <label class="block font-semibold text-fey-ink/80 mb-2">Do you plan to use VBridger? (For iOS and NVIDIA
+            Broadcast Tracker only)</label>
           <div class="flex items-center gap-6">
             <label class="flex items-center gap-2 cursor-pointer font-semibold text-fey-ink">
               <input type="radio" name="use_vbridger" value="Yes" class="w-4 h-4 accent-fey-purple" />
@@ -744,19 +815,25 @@
               <span>No</span>
             </label>
           </div>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select one option to proceed</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select one option to
+            proceed</span>
         </div>
 
         <!-- CHARACTER PERSONALITY -->
         <div class="field-wrapper">
-          <label class="block font-semibold text-fey-ink/80 mb-1.5">Tell me a little bit about your character's personality</label>
-          <textarea name="Character Personality" data-required="true" rows="3" placeholder="Energetic, shy, smug, chaotic witch, gentle paladin..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <label class="block font-semibold text-fey-ink/80 mb-1.5">Tell me a little bit about your character's
+            personality</label>
+          <textarea name="Character Personality" data-required="true" rows="3"
+            placeholder="Energetic, shy, smug, chaotic witch, gentle paladin..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- CONTENT TYPE -->
         <div class="field-wrapper" data-checkbox-group="content_type">
-          <label class="block font-semibold text-fey-ink/80 mb-2">What type of content will you be creating? (Select all that apply)</label>
+          <label class="block font-semibold text-fey-ink/80 mb-2">What type of content will you be creating? (Select all
+            that apply)</label>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
             <label class="fey-card-option p-3 flex items-center gap-3 cursor-pointer">
               <input type="checkbox" name="content_type" value="Gaming" class="w-4 h-4 accent-fey-purple" />
@@ -777,60 +854,80 @@
           </div>
           <div>
             <label class="block text-[11px] text-fey-ink/60 mb-1">Others (please specify):</label>
-            <input type="text" name="Content Types (Others)" placeholder="e.g. Just Chatting, ASMR, Crafting..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+            <input type="text" name="Content Types (Others)" placeholder="e.g. Just Chatting, ASMR, Crafting..."
+              class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
           </div>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select at least one content type (or fill in others)</span>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please select at least one
+            content type (or fill in others)</span>
         </div>
 
         <!-- REFERENCE SHEET LINK -->
         <div class="field-wrapper">
-          <label class="block font-semibold text-fey-ink/80 mb-1.5">Reference sheet (Please enter an accessible link)</label>
-          <input type="url" name="Reference Sheet Link" data-required="true" placeholder="https://drive.google.com/..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid URL link</span>
+          <label class="block font-semibold text-fey-ink/80 mb-1.5">Reference sheet (Please enter an accessible
+            link)</label>
+          <input type="url" name="Reference Sheet Link" data-required="true" placeholder="https://drive.google.com/..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid URL
+            link</span>
         </div>
 
         <!-- MODEL PSD LINK -->
         <div class="field-wrapper">
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Model .psd (Please enter an accessible link)</label>
-          <input type="url" name="Model PSD Link" data-required="true" placeholder="https://drive.google.com/..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid URL link</span>
+          <input type="url" name="Model PSD Link" data-required="true" placeholder="https://drive.google.com/..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl px-4 py-2.5 text-fey-ink focus:outline-none focus:border-fey-purple transition" />
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid URL
+            link</span>
         </div>
 
         <!-- EXPRESSIONS & TOGGLES LIST -->
         <div class="field-wrapper">
-          <label class="block font-semibold text-fey-ink/80 mb-1.5">List all expressions, toggles and animations wanted for the model:</label>
-          <textarea name="Expressions & Toggles List" data-required="true" rows="4" placeholder="1. Angry eyes&#10;2. Cry expression&#10;3. Witch hat toggle..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
-          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit your application</span>
+          <label class="block font-semibold text-fey-ink/80 mb-1.5">List all expressions, toggles and animations wanted
+            for the model:</label>
+          <textarea name="Expressions & Toggles List" data-required="true" rows="4"
+            placeholder="1. Angry eyes&#10;2. Cry expression&#10;3. Witch hat toggle..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
+          <span class="field-error-msg"><i class="fa-solid fa-circle-exclamation"></i> This field is required to submit
+            your application</span>
         </div>
 
         <!-- QUESTIONS / EXTRAS -->
         <div>
           <label class="block font-semibold text-fey-ink/80 mb-1.5">Questions / Special requests / Extras?</label>
-          <textarea name="Questions & Special Requests" rows="3" placeholder="Any additional details or special requests..." class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
+          <textarea name="Questions & Special Requests" rows="3"
+            placeholder="Any additional details or special requests..."
+            class="w-full bg-fey-bg border border-fey-purple/30 rounded-xl p-4 text-fey-ink focus:outline-none focus:border-fey-purple transition"></textarea>
         </div>
 
         <!-- CONFIRMAÇÃO DE CONTATO COM ESTILO ROXINHO -->
-        <div class="field-wrapper p-4 bg-fey-purple/10 border border-fey-purple/30 rounded-2xl flex flex-col gap-3 checkbox-card-border">
+        <div
+          class="field-wrapper p-4 bg-fey-purple/10 border border-fey-purple/30 rounded-2xl flex flex-col gap-3 checkbox-card-border">
           <label class="flex items-center gap-3 cursor-pointer font-semibold text-fey-ink">
-            <input type="checkbox" name="Contact Confirmation" value="Confirmed to Contact" data-required="true" class="w-4 h-4 accent-fey-purple flex-shrink-0" />
+            <input type="checkbox" name="Contact Confirmation" value="Confirmed to Contact" data-required="true"
+              class="w-4 h-4 accent-fey-purple flex-shrink-0" />
             <span>Please, contact me after filling the form so I can check it ASAP ♥</span>
           </label>
           <div class="flex flex-wrap items-center gap-3 pl-7 text-xs">
-            <a href="https://x.com/FeyLive2d" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-fey-purple/30 text-fey-purple font-bold hover:border-fey-purple transition">
+            <a href="https://x.com/FeyLive2d" target="_blank"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-fey-purple/30 text-fey-purple font-bold hover:border-fey-purple transition">
               <i class="fa-brands fa-x-twitter"></i> Twitter (@FeyLive2d)
             </a>
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-fey-purple/30 text-fey-ink font-bold">
+            <span
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-fey-purple/30 text-fey-ink font-bold">
               <i class="fa-brands fa-discord text-fey-purple"></i> Discord: <code class="text-fey-purple">feyfolk</code>
             </span>
           </div>
-          <span class="field-error-msg pl-7"><i class="fa-solid fa-circle-exclamation"></i> Please confirm this checkbox to submit your application</span>
+          <span class="field-error-msg pl-7"><i class="fa-solid fa-circle-exclamation"></i> Please confirm this checkbox
+            to submit your application</span>
         </div>
 
         <!-- SUBMIT BUTTON -->
         <div class="pt-4 flex justify-end">
-          <button type="submit" id="submitBtn" class="group btn-gradient px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+          <button type="submit" id="submitBtn"
+            class="group btn-gradient px-8 py-3.5 rounded-xl font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2">
             <span id="btnText">Submit Application</span>
-            <i id="btnIcon" class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i>
+            <i id="btnIcon"
+              class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i>
           </button>
         </div>
 
@@ -841,10 +938,8 @@
 
   <!-- BALÃO DE PREVIEW FLUTUANTE -->
   <aside class="hidden xl:block preview-floating-box">
-    <div 
-      id="previewBubble" 
-      class="fey-card thought-bubble p-4 bg-white/95 border-2 border-fey-purple/40 shadow-xl opacity-0 transition-all duration-300 pointer-events-none transform translate-y-3 relative"
-    >
+    <div id="previewBubble"
+      class="fey-card thought-bubble p-4 bg-white/95 border-2 border-fey-purple/40 shadow-xl opacity-0 transition-all duration-300 pointer-events-none transform translate-y-3 relative">
       <div class="flex items-center justify-between pb-2 mb-2 border-b border-fey-purple/15">
         <span id="previewTitle" class="font-serif font-bold text-xs text-fey-ink uppercase tracking-wider">
           Sample Preview
@@ -854,20 +949,15 @@
         </span>
       </div>
 
-      <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3 border border-fey-purple/20 flex items-center justify-center">
-        <video 
-          id="previewVideo" 
-          src="" 
-          autoplay 
-          loop 
-          muted 
-          playsinline 
-          class="w-full h-full object-cover hidden"
-        ></video>
+      <div
+        class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3 border border-fey-purple/20 flex items-center justify-center">
+        <video id="previewVideo" src="" autoplay loop muted playsinline
+          class="w-full h-full object-cover hidden"></video>
 
         <div id="previewPlaceholder" class="text-center p-4">
           <i class="fa-solid fa-wand-magic-sparkles text-2xl text-fey-purple/40 mb-2 block animate-pulse"></i>
-          <span class="text-xs font-mono text-zinc-400">Hover over supported options to view a video demonstration</span>
+          <span class="text-xs font-mono text-zinc-400">Hover over supported options to view a video
+            demonstration</span>
         </div>
       </div>
 
@@ -882,7 +972,8 @@
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-zinc-800 pb-12">
       <div class="space-y-3">
         <div class="flex items-center gap-3">
-          <img src="image.png" alt="fey logo" class="w-8 h-8 object-contain rounded-full border border-fey-purple/50 bg-white p-0.5" />
+          <img src="image.png" alt="fey logo"
+            class="w-8 h-8 object-contain rounded-full border border-fey-purple/50 bg-white p-0.5" />
           <span class="font-serif text-base tracking-widest uppercase font-bold text-white">Fey</span>
         </div>
         <p class="text-xs font-mono text-zinc-400 leading-relaxed">
@@ -902,15 +993,19 @@
       <div class="space-y-3">
         <h4 class="font-serif text-sm font-bold tracking-wider text-fey-pink uppercase">Atelier Socials</h4>
         <div class="flex items-center gap-4 text-lg text-zinc-300">
-          <a href="https://x.com/FeyLive2d" target="_blank" class="hover:text-fey-pink transition" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="https://www.twitch.tv/fey_live2d" target="_blank" class="hover:text-fey-pink transition" title="Twitch"><i class="fa-brands fa-twitch"></i></a>
-          <a href="https://vgen.co/fey" target="_blank" class="hover:text-fey-pink transition" title="VGen"><i class="fa-solid fa-gem"></i></a>
+          <a href="https://x.com/FeyLive2d" target="_blank" class="hover:text-fey-pink transition" title="Twitter"><i
+              class="fa-brands fa-x-twitter"></i></a>
+          <a href="https://www.twitch.tv/fey_live2d" target="_blank" class="hover:text-fey-pink transition"
+            title="Twitch"><i class="fa-brands fa-twitch"></i></a>
+          <a href="https://vgen.co/fey" target="_blank" class="hover:text-fey-pink transition" title="VGen"><i
+              class="fa-solid fa-gem"></i></a>
         </div>
         <div class="text-xs font-mono text-zinc-400">Discord: <code class="text-fey-pink">feyfolk</code></div>
       </div>
     </div>
 
-    <div class="max-w-6xl mx-auto px-6 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500">
+    <div
+      class="max-w-6xl mx-auto px-6 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500">
       <div>&copy; 2026 Fey. All Rights Reserved.</div>
       <div>Designed with ✦ Atelier Magic</div>
     </div>
@@ -942,7 +1037,7 @@
     }
 
     // FECHA O MENU SE CLICAR FORA dele
-    window.addEventListener('click', function(e) {
+    window.addEventListener('click', function (e) {
       const container = document.getElementById('langDropdownContainer');
       const menu = document.getElementById('langMenu');
       if (container && !container.contains(e.target)) {
@@ -965,7 +1060,7 @@
         previewVideo.src = videoSrc;
         previewVideo.classList.remove('hidden');
         previewPlaceholder.classList.add('hidden');
-        previewVideo.play().catch(() => {});
+        previewVideo.play().catch(() => { });
       }
 
       previewBubble.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-3');
@@ -987,7 +1082,7 @@
 
     function selectTier(tier, price) {
       currentTierPrice = price;
-      
+
       ['full', 'half', 'chibi'].forEach(t => {
         const el = document.getElementById(`tier-${t}`);
         el.classList.remove('fey-card-active');
@@ -1004,10 +1099,10 @@
         icon.className = 'fa-solid fa-circle-check';
       }
 
-      if(tier === 'full') currentTierName = 'Full Body ($2,000)';
-      if(tier === 'half') currentTierName = 'Half Body ($1,500)';
-      if(tier === 'chibi') currentTierName = 'Chibi Model ($1,200)';
-      
+      if (tier === 'full') currentTierName = 'Full Body ($2,000)';
+      if (tier === 'half') currentTierName = 'Half Body ($1,500)';
+      if (tier === 'chibi') currentTierName = 'Chibi Model ($1,200)';
+
       calculateTotal();
     }
 
@@ -1084,13 +1179,13 @@
 
       const totalStr = `$${Math.round(total).toLocaleString()}`;
       document.getElementById('finalPrice').innerText = totalStr;
-      
+
       document.getElementById('hidden_selected_tier').value = currentTierName;
       document.getElementById('hidden_estimated_total').value = `${totalStr} USD ${isNdaChecked ? '(NDA Included)' : ''}`;
     }
 
     // SUBMIT & VALIDAÇÃO
-    document.getElementById('commissionForm').addEventListener('submit', function(e) {
+    document.getElementById('commissionForm').addEventListener('submit', function (e) {
       e.preventDefault();
       let isValid = true;
       let firstErrorField = null;
@@ -1154,30 +1249,41 @@
       btn.disabled = true;
       btnText.innerText = "Rolling Application...";
       btnIcon.classList.add('spinning-dice');
+      // Precisamos converter o FormData para os parâmetros que a API do FormSubmit aceita melhor via fetch
+      const formData = new FormData(this);
+      const data = new URLSearchParams(formData);
 
+      // Enviando o FormData puro direto para o endpoint oficial de AJAX do FormSubmit
       fetch(this.action, {
         method: 'POST',
         body: new FormData(this),
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        this.classList.add('hidden');
-        document.getElementById('successMessage').classList.remove('hidden');
-      }).catch(error => {
-        this.classList.add('hidden');
-        document.getElementById('successMessage').classList.remove('hidden');
-      });
-    });
-
-    document.querySelectorAll('input, textarea').forEach(element => {
-      element.addEventListener('input', function() {
-        const wrapper = this.closest('.field-wrapper');
-        if (wrapper) wrapper.classList.remove('has-error');
-      });
-      element.addEventListener('change', function() {
-        const wrapper = this.closest('.field-wrapper');
-        if (wrapper) wrapper.classList.remove('has-error');
-      });
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          // Se a API confirmar que enviou
+          if (data.success === "true" || data.success) {
+            this.classList.add('hidden');
+            document.getElementById('successMessage').classList.remove('hidden');
+          } else {
+            alert("Ocorreu um erro lá no FormSubmit! Tente novamente.");
+            btn.disabled = false;
+            btnText.innerText = "Submit Application";
+            btnIcon.classList.remove('spinning-dice');
+          }
+        })
+        .catch(error => {
+          // Se o navegador bloquear (CORS) ou ficar sem internet
+          console.error("Erro no envio:", error);
+          alert("Erro de conexão ao enviar o formulário.");
+          btn.disabled = false;
+          btnText.innerText = "Submit Application";
+          btnIcon.classList.remove('spinning-dice');
+        });
     });
   </script>
 </body>
+
 </html>
