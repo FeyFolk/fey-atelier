@@ -287,7 +287,7 @@
               <span class="text-fey-purple font-bold">Twitch Highlight</span>
             </div>
           </div>
-
+          
           <div class="fey-card p-4 w-[340px] sm:w-[480px] flex-shrink-0 flex flex-col">
             <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
               <iframe src="https://clips.twitch.tv/embed?clip=LightDreamyLobsterFutureMan-Ly6aRjvR6oQLBCVx&parent=feyfolk.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full" loading="lazy"></iframe>
@@ -306,7 +306,7 @@
           </div>
 
           <div class="fey-card p-4 w-[340px] sm:w-[480px] flex-shrink-0 flex flex-col">
-            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
+            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <iframe src="https://clips.twitch.tv/embed?clip=HorribleObliqueAubergineDoritosChip-ejvjirtYj0V8GKiU&parent=feyfolk.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full" loading="lazy"></iframe>
             </div>
             <div>
@@ -323,7 +323,7 @@
           </div>
 
           <div class="fey-card p-4 w-[340px] sm:w-[480px] flex-shrink-0 flex flex-col">
-            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
+            <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <iframe src="https://clips.twitch.tv/embed?clip=AwkwardSilkyHamburgerOpieOP-SkkK6ezn8n__vz2C&parent=feyfolk.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full" loading="lazy"></iframe>
             </div>
             <div>
@@ -449,7 +449,7 @@
       <div id="sliderViewport" class="slider-viewport">
         <div id="sliderTrack" class="slider-track">
           
-          <!-- CARD 1: Dobs -->
+          <!-- CARD 1: Dobs (object-[30%_center] sincronizado com a galeria) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model1')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <video 
@@ -458,7 +458,7 @@
                 loop 
                 playsinline 
                 preload="auto"
-                class="carousel-preview-video w-full h-full object-cover object-[60%_center] group-hover:scale-105 transition duration-300"
+                class="carousel-preview-video w-full h-full object-cover object-[30%_center] group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0.001;"
               ></video>
@@ -539,7 +539,7 @@
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Custom Mechanics</p>
           </div>
 
-          <!-- CARD 6: TwoInOne -->
+          <!-- CARD 6: TwoInOne (scale-110 e object-[75%_center] sincronizado com a galeria) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model7')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <video 
@@ -548,7 +548,7 @@
                 loop 
                 playsinline 
                 preload="auto"
-                class="carousel-preview-video w-full h-full object-cover scale-110 object-[52%_center] group-hover:scale-115 transition duration-300"
+                class="carousel-preview-video w-full h-full object-cover scale-110 object-[75%_center] group-hover:scale-115 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0.001;"
               ></video>
