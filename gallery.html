@@ -160,7 +160,9 @@
     <!-- GRID DE MODELOS -->
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-      <!-- MODEL 1: Dobs (object-[30%_center]) -->
+      <!-- ==================== MODELOS COM VÍDEO ==================== -->
+
+      <!-- MODEL 1: Dobs -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model1')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -178,7 +180,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">2 hairs • several arm poses • custom mechanics • lean</p>
       </div>
 
-      <!-- MODEL 2: Kraven (object-[80%_center]) -->
+      <!-- MODEL 2: Kraven -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model2')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -196,22 +198,22 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">several arm poses • lean • 3 hairs • 3 outfits • several toggles</p>
       </div>
 
-      <!-- MODEL 3: Cat on mars (scale-110 + object-[65%_center]) -->
-      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model3')">
+      <!-- MODEL 3: Neniku -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model6')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
-            src="CatOnMars.mp4" 
+            src="Nenikumeat.mp4" 
             muted 
             loop 
             playsinline 
             preload="auto"
-            class="w-full h-full object-cover scale-110 object-[65%_center] group-hover:scale-115 transition duration-300"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
             onmouseenter="this.play()" 
             onmouseleave="this.pause(); this.currentTime = 0;"
           ></video>
         </div>
-        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Cat on mars</h3>
-        <p class="text-xs text-fey-ink/70 mt-0.5">color switch • complete vbridger</p>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Neniku</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger • Lean • 2 outfits • Custom Mechanics</p>
       </div>
 
       <!-- MODEL 4: Pastelix -->
@@ -252,25 +254,25 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">wings • tail • 2 hairs • several toggles</p>
       </div>
 
-      <!-- MODEL 6: Neniku -->
-      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model6')">
+      <!-- MODEL 6: Cat on mars -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model3')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
-            src="Nenikumeat.mp4" 
+            src="CatOnMars.mp4" 
             muted 
             loop 
             playsinline 
             preload="auto"
-            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+            class="w-full h-full object-cover scale-110 object-[65%_center] group-hover:scale-115 transition duration-300"
             onmouseenter="this.play()" 
             onmouseleave="this.pause(); this.currentTime = 0;"
           ></video>
         </div>
-        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Neniku</h3>
-        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger • Lean • 2 outfits • Custom Mechanics</p>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Cat on mars</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">color switch • complete vbridger</p>
       </div>
 
-      <!-- MODEL 7: TwoInOne (scale-110 + object-[52%_center]) -->
+      <!-- MODEL 7: TwoInOne -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model7')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -279,7 +281,7 @@
             loop 
             playsinline 
             preload="auto"
-            class="w-full h-full object-cover scale-110 object-[52%_center] group-hover:scale-115 transition duration-300"
+            class="w-full h-full object-cover scale-110 object-[75%_center] group-hover:scale-115 transition duration-300"
             onmouseenter="this.play()" 
             onmouseleave="this.pause(); this.currentTime = 0;"
           ></video>
@@ -324,7 +326,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">frame animations • custom animations</p>
       </div>
 
-      <!-- MODEL JAY 1: Jay Jokers Male (object-[75%_center]) -->
+      <!-- MODEL 10: Jay Jokers Male -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_jay_male')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -342,25 +344,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">controller toggle • lean • 2 outfits</p>
       </div>
 
-      <!-- MODEL JAY 2: Jay Jokers Female -->
-      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_jay_female')">
-        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
-          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
-        </div>
-        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Jay Jokers (Female)</h3>
-        <p class="text-xs text-fey-ink/70 mt-0.5">controller toggle • lean • 2 outfits</p>
-      </div>
-
-      <!-- MODEL 10: Gremlin Verna (Coming Soon) -->
-      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model10')">
-        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
-          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
-        </div>
-        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Gremlin Verna</h3>
-        <p class="text-xs text-fey-ink/70 mt-0.5">lean</p>
-      </div>
-
-      <!-- MODEL OZNER -->
+      <!-- MODEL 11: Ozner -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_ozner')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -378,7 +362,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
       </div>
 
-      <!-- MODEL 22: Luxe -->
+      <!-- MODEL 12: Luxe -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model22')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -396,7 +380,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
       </div>
 
-      <!-- MODEL 12: Leudessa -->
+      <!-- MODEL 13: Leudessa -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model12')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -414,7 +398,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL DOVEALOVE -->
+      <!-- MODEL 14: Dovealove -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_dovealove')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -423,7 +407,7 @@
             loop 
             playsinline 
             preload="auto"
-            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            class="w-full h-full object-cover object-[75%_center] group-hover:scale-105 transition duration-300"
             onmouseenter="this.play()" 
             onmouseleave="this.pause(); this.currentTime = 0;"
           ></video>
@@ -432,7 +416,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">full body • vbridger • 2 hairs • wings • custom mechanics • custom animations • several arm toggles</p>
       </div>
 
-      <!-- MODEL 13: Glythic Mirror -->
+      <!-- MODEL 15: Glythic Mirror -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model13')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -450,7 +434,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL 14: Kitsu -->
+      <!-- MODEL 16: Kitsu -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model14')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -468,7 +452,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">custom mechanics • sitting toggle • keyboard tracking</p>
       </div>
 
-      <!-- MODEL 15: Aya -->
+      <!-- MODEL 17: Aya -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model15')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -486,7 +470,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
       </div>
 
-      <!-- MODEL 16: Trimventurez -->
+      <!-- MODEL 18: Trimventurez -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model16')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -504,7 +488,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL 17: Miabyte -->
+      <!-- MODEL 19: Miabyte -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model17')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -522,11 +506,11 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL 19: Sunshine (object-[75%_center]) -->
+      <!-- MODEL 20: Sunshine -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model19')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
-            src="Sunshine.mp4" 
+            src="sunshine.mp4" 
             muted 
             loop 
             playsinline 
@@ -540,7 +524,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL 20: Kuzi -->
+      <!-- MODEL 21: Kuzi -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model20')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -558,7 +542,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
       </div>
 
-      <!-- MODEL 21: iilluminaughtii -->
+      <!-- MODEL 22: iilluminaughtii -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model21')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -576,7 +560,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • custom mechanics</p>
       </div>
 
-      <!-- MODEL 11: Juzo -->
+      <!-- MODEL 23: Juzo -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model11')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -594,7 +578,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
       </div>
 
-      <!-- MODEL 23: Verna -->
+      <!-- MODEL 24: Verna -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model23')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -612,7 +596,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL CU IFREANN (object-[75%_center]) -->
+      <!-- MODEL 25: Cu Ifreann -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_cu_ifreann')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -630,7 +614,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL 24: Ash -->
+      <!-- MODEL 26: Ash -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model24')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -648,16 +632,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
       </div>
 
-      <!-- MODEL 25: Falcy -->
-      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model25')">
-        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
-          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
-        </div>
-        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Falcy</h3>
-        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • custom mechanics</p>
-      </div>
-
-      <!-- MODEL 26: Andy -->
+      <!-- MODEL 27: Andy -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model26')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -675,7 +650,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
-      <!-- MODEL 27: Near -->
+      <!-- MODEL 28: Near -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model27')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -693,7 +668,7 @@
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • frame animation</p>
       </div>
 
-      <!-- MODEL 28: SOMA -->
+      <!-- MODEL 29: SOMA -->
       <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model28')">
         <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
           <video 
@@ -708,6 +683,224 @@
           ></video>
         </div>
         <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">SOMA</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- ==================== COMING SOON ==================== -->
+
+      <!-- TwoInOne (Male) -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_twoinone_male')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">TwoInOne (Male)</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- Kite Hasegawa -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_kite')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kite Hasegawa</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- Maemori -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_maemori')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Maemori</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Jay Jokers (Female) -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_jay_female')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Jay Jokers (Female)</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">controller toggle • lean • 2 outfits</p>
+      </div>
+
+      <!-- Gremlin Verna -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model10')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Gremlin Verna</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">lean</p>
+      </div>
+
+      <!-- cozychuu -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_cozychuu')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">cozychuu</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Storyteller -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_storyteller')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Storyteller</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Arc Lycaon -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_arc_lycaon')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Arc Lycaon</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Falcy -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model25')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Falcy</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • custom mechanics</p>
+      </div>
+
+      <!-- Graysho -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_graysho')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Graysho</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Birdfort -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_birdfort')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Birdfort</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Birdfort 2.0 -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_birdfort2')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Birdfort 2.0</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Nichu -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_nichu')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Nichu</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Exepher -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_exepher')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Exepher</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Funkelgeist -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_funkelgeist')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Funkelgeist</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Harespace -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_harespace')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Harespace</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Phwee -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_phwee')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Phwee</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Aphocrifo -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_aphocrifo')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Aphocrifo</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Kukki Crumble -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_kukkicrumble')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kukki Crumble</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Kharrma420 -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_kharrma420')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kharrma420</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Kuusou -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_kuusou')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kuusou</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- hikikoBlue -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_hikikoblue')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">hikikoBlue</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Rhetta Nova -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_rhettanova')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Rhetta Nova</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
+      </div>
+
+      <!-- Muse -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_muse')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Muse</h3>
         <p class="text-xs text-fey-ink/70 mt-0.5">Full Body</p>
       </div>
 
@@ -811,12 +1004,12 @@
         badges: ["several arm poses", "lean", "3 hairs", "3 outfits", "several toggles"],
         description: "Full body commission equipped with 3 unique outfits, 3 hair variations, extensive toggles, expressive arm poses, and lean motion."
       },
-      model3: {
-        title: "Cat on mars",
-        artist: "@nazuna_higurasi",
-        videoUrl: "CatOnMars.mp4",
-        badges: ["color switch", "complete vbridger"],
-        description: "Dynamic Live2D rig built with full VBridger integration and quick asset color switching."
+      model6: {
+        title: "Neniku",
+        artist: "@bermuda_muda",
+        videoUrl: "Nenikumeat.mp4",
+        badges: ["Full Body", "Complete vbridger", "Lean", "2 outfits", "Custom Mechanics"],
+        description: "Full body Live2D rigging optimized with advanced vbridger capabilities, dynamic lean physics, alternative outfits, and custom mechanics."
       },
       model4: {
         title: "Pastelix",
@@ -832,12 +1025,12 @@
         badges: ["wings", "tail", "2 hairs", "several toggles"],
         description: "Feature-packed model with independent wing kinematics, tail sway, 2 hairs, and several outfit/accessory toggles."
       },
-      model6: {
-        title: "Neniku",
-        artist: "@bermuda_muda",
-        videoUrl: "Nenikumeat.mp4",
-        badges: ["Full Body", "Complete vbridger", "Lean", "2 outfits", "Custom Mechanics"],
-        description: "Full body Live2D rigging optimized with advanced vbridger capabilities, dynamic lean physics, alternative outfits, and custom mechanics."
+      model3: {
+        title: "Cat on mars",
+        artist: "@nazuna_higurasi",
+        videoUrl: "CatOnMars.mp4",
+        badges: ["color switch", "complete vbridger"],
+        description: "Dynamic Live2D rig built with full VBridger integration and quick asset color switching."
       },
       model7: {
         title: "TwoInOne",
@@ -866,20 +1059,6 @@
         videoUrl: "jay2.mp4",
         badges: ["controller toggle", "lean", "2 outfits"],
         description: "Detailed male model rig featuring interactive controller toggles, lean parameters, and 2 complete outfits."
-      },
-      model_jay_female: {
-        title: "Jay Jokers (Female)",
-        artist: "@ArtistHandle",
-        videoUrl: "",
-        badges: ["controller toggle", "lean", "2 outfits"],
-        description: "Female counterpart rig featuring matched controller toggles, lean physics, and 2 unique outfits."
-      },
-      model10: {
-        title: "Gremlin Verna",
-        artist: "@FiendishForm",
-        videoUrl: "",
-        badges: ["lean"],
-        description: "Compact model optimized for high bounce, snappy motion tracking, and expressive body lean physics."
       },
       model_ozner: {
         title: "Ozner",
@@ -947,7 +1126,7 @@
       model19: {
         title: "Sunshine",
         artist: "@ArtistHandle",
-        videoUrl: "Sunshine.mp4",
+        videoUrl: "sunshine.mp4",
         badges: ["Full Body"],
         description: "Vibrant model with soft bouncy physics, complete facial parameter tracking, and interactive toggles."
       },
@@ -995,13 +1174,6 @@
         badges: ["Full Body", "Complete vbridger"],
         description: "Dynamic male rig featuring comprehensive VBridger facial tracking, outfit swaps, and responsive hair movement."
       },
-      model25: {
-        title: "Falcy",
-        artist: "@ArtistHandle",
-        videoUrl: "",
-        badges: ["Full Body", "custom mechanics"],
-        description: "Fluid full body rig built with emphasis on character personality, clean physics sway, and custom mechanics."
-      },
       model26: {
         title: "Andy",
         artist: "@ArtistHandle",
@@ -1022,6 +1194,174 @@
         videoUrl: "soma.mp4",
         badges: ["Full Body"],
         description: "Full body Live2D model with elaborate mechanical asset physics, wide-range body lean, and custom expressions."
+      },
+      model_twoinone_male: {
+        title: "TwoInOne (Male)",
+        artist: "@madammito",
+        videoUrl: "",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Male counterpart rig featuring matched dynamics and comprehensive tracking setup."
+      },
+      model_kite: {
+        title: "Kite Hasegawa",
+        artist: "@Jouvru",
+        videoUrl: "",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Upcoming Live2D rig featuring advanced physics, complete tracking integration, and expressive dynamics."
+      },
+      model_maemori: {
+        title: "Maemori",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model project with detailed parameter mapping and natural motion."
+      },
+      model_jay_female: {
+        title: "Jay Jokers (Female)",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["controller toggle", "lean", "2 outfits"],
+        description: "Female counterpart rig featuring matched controller toggles, lean physics, and 2 unique outfits."
+      },
+      model10: {
+        title: "Gremlin Verna",
+        artist: "@FiendishForm",
+        videoUrl: "",
+        badges: ["lean"],
+        description: "Compact model optimized for high bounce, snappy motion tracking, and expressive body lean physics."
+      },
+      model_cozychuu: {
+        title: "cozychuu",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Cozy full-body Live2D rigging with expressive tracking setups and soft bounce dynamics."
+      },
+      model_storyteller: {
+        title: "Storyteller",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Atmospheric Live2D model designed for narrative streaming and fluid facial dynamics."
+      },
+      model_arc_lycaon: {
+        title: "Arc Lycaon",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Detailed canine/wolf rig featuring dynamic fur physics, ear tracking, and expressive facial presets."
+      },
+      model25: {
+        title: "Falcy",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body", "custom mechanics"],
+        description: "Fluid full body rig built with emphasis on character personality, clean physics sway, and custom mechanics."
+      },
+      model_graysho: {
+        title: "Graysho",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_birdfort: {
+        title: "Birdfort",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_birdfort2: {
+        title: "Birdfort 2.0",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming upgraded Live2D model showcase."
+      },
+      model_nichu: {
+        title: "Nichu",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_exepher: {
+        title: "Exepher",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_funkelgeist: {
+        title: "Funkelgeist",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_harespace: {
+        title: "Harespace",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_phwee: {
+        title: "Phwee",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_aphocrifo: {
+        title: "Aphocrifo",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_kukkicrumble: {
+        title: "Kukki Crumble",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_kharrma420: {
+        title: "Kharrma420",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_kuusou: {
+        title: "Kuusou",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_hikikoblue: {
+        title: "hikikoBlue",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_rhettanova: {
+        title: "Rhetta Nova",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
+      },
+      model_muse: {
+        title: "Muse",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body"],
+        description: "Upcoming Live2D model showcase."
       }
     };
 
