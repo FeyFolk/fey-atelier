@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>fey_live2d — Client Gallery & Showcase</title>
+  <title>Fey — Rigging Gallery</title>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -17,7 +17,8 @@
               purple: '#b882e6',
               blue: '#92a1f0',
               ink: '#1c1917',
-              darkFooter: '#110d18'
+              darkFooter: '#110d18',
+              card: '#ffffff'
             }
           },
           fontFamily: {
@@ -32,7 +33,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
@@ -62,13 +63,20 @@
       border: 1.5px solid rgba(184, 130, 230, 0.25); 
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(28, 25, 23, 0.04);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); 
+      transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+      user-select: none;
+    }
+    
+    .fey-card:hover { 
+      border-color: #b882e6; 
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 16px 45px rgba(184, 130, 230, 0.25);
     }
 
-    .fey-card:hover {
-      border-color: #b882e6;
-      transform: translateY(-4px);
-      box-shadow: 0 16px 35px rgba(184, 130, 230, 0.18);
+    .gradient-text {
+      background: linear-gradient(135deg, #f3a0d3 0%, #b882e6 50%, #92a1f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .btn-gradient {
@@ -83,7 +91,6 @@
       opacity: 0.95;
     }
 
-    /* GLASSMORPHISM BACKDROP & DRAWER */
     .glass-backdrop {
       background: rgba(28, 25, 23, 0.35);
       backdrop-filter: blur(8px);
@@ -113,173 +120,508 @@
     }
   </style>
 </head>
-<body class="relative min-h-screen selection:bg-fey-pink/30 selection:text-fey-ink flex flex-col justify-between">
+<body class="relative min-h-screen selection:bg-fey-pink/30 selection:text-fey-ink">
 
-  <!-- FLOATING HEADER (PADRONIZADO) -->
+  <!-- FLOATING HEADER -->
   <div class="fixed top-6 left-0 right-0 z-40 px-4 flex justify-center">
     <header class="floating-header max-w-5xl w-full h-16 rounded-full px-6 flex items-center justify-between">
       
       <a href="index.html" class="flex items-center gap-3 group">
-        <img src="image.png" alt="fey logo" class="w-9 h-9 object-contain rounded-full border-2 border-fey-purple/40 bg-white p-0.5 shadow-sm group-hover:scale-105 transition" />
+        <img src="logo.png" alt="fey logo" class="w-9 h-9 object-contain rounded-full border-2 border-fey-purple/40 bg-white p-0.5 shadow-sm group-hover:scale-105 transition" />
         <div class="flex flex-col">
           <span class="font-serif text-base tracking-widest uppercase font-bold text-fey-ink">Fey</span>
           <span class="text-[9px] font-mono tracking-wider text-fey-ink/60 uppercase">Rigging Atelier</span>
         </div>
       </a>
 
+      <!-- NAVEGAÇÃO -->
       <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-fey-ink/80 font-medium">
-        <a href="index.html" data-i18n="nav_home" class="hover:text-fey-purple transition">Home</a>
-        <a href="gallery.html" data-i18n="nav_gallery" class="hover:text-fey-purple transition font-bold text-fey-purple">Gallery</a>
-        <a href="calculator.html" data-i18n="nav_prices" class="hover:text-fey-purple transition">Prices</a>
+        <a href="index.html" class="hover:text-fey-purple transition">Home</a>
+        <a href="gallery.html" class="hover:text-fey-purple transition font-bold text-fey-purple">Gallery</a>
+        <a href="calculator.html" class="hover:text-fey-purple transition">Prices</a>
       </nav>
 
       <div class="flex items-center gap-3">
-        <!-- LANGUAGE TOGGLE DROPDOWN -->
-        <div class="relative" id="langDropdownContainer">
-          <button 
-            type="button"
-            onclick="toggleLangDropdown(event)"
-            class="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/70 border border-fey-purple/30 text-xs font-mono font-semibold text-fey-ink hover:border-fey-purple transition"
-          >
-            <i class="fa-solid fa-globe text-fey-purple"></i>
-            <span id="currentLang">EN</span>
-            <i class="fa-solid fa-chevron-down text-[9px] text-fey-ink/60 ml-0.5"></i>
-          </button>
-          
-          <div 
-            id="langMenu" 
-            class="absolute right-0 top-full mt-2 w-32 bg-white border border-fey-purple/30 rounded-2xl shadow-xl py-2 hidden transition z-50"
-          >
-            <button type="button" onclick="setLanguage('EN')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
-              <span class="text-xs">🇺🇸</span> English (EN)
-            </button>
-            <button type="button" onclick="setLanguage('ES')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
-              <span class="text-xs">🇪🇸</span> Español (ES)
-            </button>
-            <button type="button" onclick="setLanguage('JA')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
-              <span class="text-xs">🇯🇵</span> 日本語 (JA)
-            </button>
-            <button type="button" onclick="setLanguage('ZH')" class="w-full text-left flex items-center gap-2 px-4 py-1.5 text-xs font-mono text-fey-ink/80 hover:text-fey-purple hover:bg-fey-bg transition">
-              <span class="text-xs">🇨🇳</span> 中文 (ZH)
-            </button>
-          </div>
-        </div>
-
         <a href="calculator.html" class="group px-4 py-2 rounded-full btn-gradient text-xs font-mono font-semibold transition flex items-center gap-1.5">
-          <i class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i> <span data-i18n="btn_prices">Prices</span>
+          <i class="fa-solid fa-dice-d20 transition-transform duration-500 group-hover:rotate-[360deg]"></i> Prices
         </a>
       </div>
 
     </header>
   </div>
 
-  <!-- CONTEÚDO PRINCIPAL DA GALERIA -->
-  <main class="relative z-10 pt-32 pb-24 max-w-6xl mx-auto px-4 space-y-10">
+  <div class="relative z-10 pt-32 pb-20 max-w-7xl mx-auto px-6">
     
-    <!-- HEADER DA GALERIA -->
-    <div class="text-center space-y-3 max-w-2xl mx-auto">
-      <span class="text-xs font-mono text-fey-purple uppercase tracking-widest font-semibold">// Atelier Archives</span>
-      <h1 class="font-serif text-3xl md:text-4xl font-bold text-fey-ink">Live2D Rigging Archives</h1>
-      <p class="text-xs font-mono text-fey-ink/70 leading-relaxed">
-        Explore recent Live2D models, technical features, VBridger setups, and toggles crafted at the atelier. Click any card to inspect model specs.
-      </p>
+    <div class="text-center mb-12">
+      <h1 class="font-serif text-3xl md:text-5xl font-bold text-fey-ink mt-2">Model Rigging Gallery</h1>
+      <p class="text-xs font-mono text-fey-purple font-semibold mt-1 tracking-wider uppercase">(slowly under construction)</p>
     </div>
 
-    <!-- GRID DE MODELOS (3 COLUNAS EM TELAS GRANDES) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- GRID DE MODELOS -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-      <!-- MODEL CARD 1 -->
-      <article onclick="openModelDrawer('model1')" class="fey-card cursor-pointer overflow-hidden group">
-        <div class="relative aspect-[3/4] bg-fey-purple/10 overflow-hidden">
-          <img src="https://picsum.photos/seed/vtuber1/600/800" alt="Model Showcase" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-fey-ink/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition"></div>
-          
-          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
-            <span class="text-[10px] font-mono text-fey-pink font-bold uppercase tracking-wider">✦ Full Body Commission</span>
-            <h3 class="font-serif text-lg font-bold">Astraea — Star Witch</h3>
-            <p class="text-[11px] font-mono text-white/80">Artist: @star_illust</p>
-          </div>
+      <!-- MODEL 1: Dobs -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model1')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="Dobswhip.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
         </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Dobs</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
 
-        <div class="p-4 space-y-3">
-          <div class="flex flex-wrap gap-1.5">
-            <span class="badge-tag"><i class="fa-solid fa-wand-magic-sparkles text-[9px]"></i> Complete VBridger</span>
-            <span class="badge-tag"><i class="fa-solid fa-hand text-[9px]"></i> Hand Tracking</span>
-            <span class="badge-tag"><i class="fa-solid fa-shirt text-[9px]"></i> 2 Outfits</span>
-            <span class="badge-tag"><i class="fa-solid fa-face-smile text-[9px]"></i> 6 Toggles</span>
-          </div>
-
-          <div class="pt-2 border-t border-fey-purple/15 flex justify-between items-center text-xs font-mono text-fey-purple font-semibold group-hover:text-fey-pink transition">
-            <span>Inspect Model Specs</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition"></i>
-          </div>
+      <!-- MODEL 2: Kraven -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model2')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="Kraven.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-[80%_center] group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
         </div>
-      </article>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kraven</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
 
-      <!-- MODEL CARD 2 -->
-      <article onclick="openModelDrawer('model2')" class="fey-card cursor-pointer overflow-hidden group">
-        <div class="relative aspect-[3/4] bg-fey-purple/10 overflow-hidden">
-          <img src="https://picsum.photos/seed/vtuber2/600/800" alt="Model Showcase" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-fey-ink/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition"></div>
-          
-          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
-            <span class="text-[10px] font-mono text-fey-pink font-bold uppercase tracking-wider">✦ Half Body Commission</span>
-            <h3 class="font-serif text-lg font-bold">Kaelen — Forest Paladin</h3>
-            <p class="text-[11px] font-mono text-white/80">Artist: @forest_draws</p>
-          </div>
+      <!-- MODEL 3: Cat on mars -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model3')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="CatOnMars.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
         </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Cat on mars</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
 
-        <div class="p-4 space-y-3">
-          <div class="flex flex-wrap gap-1.5">
-            <span class="badge-tag"><i class="fa-solid fa-mobile-screen-button text-[9px]"></i> iOS Mouth</span>
-            <span class="badge-tag"><i class="fa-solid fa-shield-halved text-[9px]"></i> Arm Toggles</span>
-            <span class="badge-tag"><i class="fa-solid fa-paw text-[9px]"></i> Non-Human Parts</span>
-          </div>
-
-          <div class="pt-2 border-t border-fey-purple/15 flex justify-between items-center text-xs font-mono text-fey-purple font-semibold group-hover:text-fey-pink transition">
-            <span>Inspect Model Specs</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition"></i>
-          </div>
+      <!-- MODEL 4: Pastelix -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model4')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="Freaky.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
         </div>
-      </article>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Pastelix</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
 
-      <!-- MODEL CARD 3 -->
-      <article onclick="openModelDrawer('model3')" class="fey-card cursor-pointer overflow-hidden group">
-        <div class="relative aspect-[3/4] bg-fey-purple/10 overflow-hidden">
-          <img src="https://picsum.photos/seed/vtuber3/600/800" alt="Model Showcase" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-          <div class="absolute inset-0 bg-gradient-to-t from-fey-ink/80 via-transparent to-transparent opacity-80 group-hover:opacity-60 transition"></div>
-          
-          <div class="absolute bottom-4 left-4 right-4 text-white space-y-1">
-            <span class="text-[10px] font-mono text-fey-pink font-bold uppercase tracking-wider">✦ Chibi Commission</span>
-            <h3 class="font-serif text-lg font-bold">Mimi — Bouncy Alchemist</h3>
-            <p class="text-[11px] font-mono text-white/80">Artist: @chibi_maker</p>
-          </div>
+      <!-- MODEL 5: Sekine -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model5')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-[65%_center] group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          >
+            <source src="Sekinevideo.mp4" type="video/mp4">
+            <source src="sekinevideo.mp4" type="video/mp4">
+          </video>
         </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Sekine</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
 
-        <div class="p-4 space-y-3">
-          <div class="flex flex-wrap gap-1.5">
-            <span class="badge-tag"><i class="fa-solid fa-bolt text-[9px]"></i> High Bounce Physics</span>
-            <span class="badge-tag"><i class="fa-solid fa-gamepad text-[9px]"></i> Controller Toggle</span>
-            <span class="badge-tag"><i class="fa-solid fa-face-laugh text-[9px]"></i> 8 Expressions</span>
-          </div>
-
-          <div class="pt-2 border-t border-fey-purple/15 flex justify-between items-center text-xs font-mono text-fey-purple font-semibold group-hover:text-fey-pink transition">
-            <span>Inspect Model Specs</span>
-            <i class="fa-solid fa-arrow-right text-[10px] transform group-hover:translate-x-1 transition"></i>
-          </div>
+      <!-- MODEL 6: Neniku -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model6')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          >
+            <source src="neniku2.mp4" type="video/mp4">
+            <source src="neniku%202.mp4" type="video/mp4">
+          </video>
         </div>
-      </article>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Neniku</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger • Lean • 2 outfits • Custom Mechanics</p>
+      </div>
+
+      <!-- MODEL 7: TwoInOne -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model7')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="TwoInOne.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover object-[65%_center] group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">TwoInOne</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 8: Nemii -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model8')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="nemii3.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Nemii</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 9: Thintrovert -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model9')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="Thin.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Thintrovert</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL JAY 1: Jay Jokers Male -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_jay_male')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="jay2.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Jay Jokers (Male)</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL JAY 2: Jay Jokers Female (Em Branco) -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_jay_female')">
+        <div class="relative aspect-[9/16] bg-white rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <div class="text-center p-4 text-fey-purple/40 font-mono text-xs">✦ Coming Soon</div>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Jay Jokers (Female)</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 10: Gremlin Verna -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model10')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_gremlinverna.jpg" alt="Gremlin Verna" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Gremlin Verna</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL OZNER (Novo após Gremlin Verna) -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model_ozner')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="Ozner.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Ozner</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 22: Luxe (Trocado com Juzo) -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model22')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="luxe.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Luxe</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 12: Leudessa -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model12')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="leudessa.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Leudessa</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 13: Glythic Mirror -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model13')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_glythic.jpg" alt="Glythic Mirror" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Glythic Mirror</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 14: Kitsu -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model14')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="kitsu.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kitsu</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 15: Aya -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model15')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="aya.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Aya</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 16: Trim -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model16')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="trim.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Trimventurez</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 17: Miabyte -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model17')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="miabyte.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Miabyte</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 19: Sunshine -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model19')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_sunshine.jpg" alt="Sunshine" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Sunshine</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 20: Kuzi -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model20')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="Kuzi.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Kuzi</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 21: iilluminaughtii -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model21')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="iilluminaughtii.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">iilluminaughtii</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 11: Juzo (Trocado com Luxe) -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model11')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_juzo.jpg" alt="Juzo" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Juzo</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 23: Verna -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model23')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_verna.jpg" alt="Verna" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Verna</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 24: Ash -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model24')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_ash.jpg" alt="Ash" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Ash</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 25: Falcy -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model25')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_falcy.jpg" alt="Falcy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Falcy</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 26: Andy -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model26')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <video 
+            src="andy.mp4" 
+            muted 
+            loop 
+            playsinline 
+            preload="auto"
+            class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+            onmouseenter="this.play()" 
+            onmouseleave="this.pause(); this.currentTime = 0;"
+          ></video>
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Andy</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 27: Near -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model27')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_near.jpg" alt="Near" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Near</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
+
+      <!-- MODEL 28: SOMA -->
+      <div class="fey-card p-4 group cursor-pointer" onclick="openModelDrawer('model28')">
+        <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
+          <img src="preview_soma.jpg" alt="SOMA" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+        </div>
+        <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">SOMA</h3>
+        <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
+      </div>
 
     </div>
-  </main>
 
-  <!-- DRAWER OVERLAY COM BACKGROUND TRANSPARENTE / GLASSMORPHISM -->
+  </div>
+
+  <!-- DRAWER OVERLAY LATERAL -->
   <div id="drawerBackdrop" onclick="closeModelDrawer()" class="fixed inset-0 z-50 glass-backdrop hidden opacity-0 flex justify-end">
-    
-    <!-- PAINEL LATERAL DESLIZANTE DA DIREITA -->
     <div id="drawerPanel" onclick="event.stopPropagation()" class="glass-drawer w-full max-w-xl h-full overflow-y-auto p-6 md:p-8 space-y-6 transform translate-x-full">
       
-      <!-- HEADER DO DRAWER COM BOTÃO FECHAR -->
       <div class="flex items-center justify-between border-b border-fey-purple/20 pb-4">
         <div class="flex items-center gap-2">
           <span class="w-2.5 h-2.5 rounded-full bg-fey-purple animate-pulse"></span>
@@ -290,36 +632,31 @@
         </button>
       </div>
 
-      <!-- VÍDEO DO MODELO -->
-      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black/90 border border-fey-purple/30 shadow-lg">
-        <iframe id="drawerVideo" class="w-full h-full" src="" title="Live2D Showcase Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <!-- REPRODUTOR DE VÍDEO COMPATÍVEL (MP4 LOCAL + IFRAME EXTERNO) -->
+      <div class="relative aspect-video rounded-2xl overflow-hidden bg-black/90 border border-fey-purple/30 shadow-lg flex items-center justify-center">
+        <video id="drawerVideoPlayer" class="w-full h-full object-cover hidden" src="" controls playsinline></video>
+        <iframe id="drawerVideoIframe" class="w-full h-full hidden" src="" title="Live2D Showcase Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
 
-      <!-- TÍTULO E AUTOR DO MODELO -->
       <div class="space-y-1">
-        <h2 id="drawerTitle" class="font-serif text-2xl font-bold text-fey-ink">Astraea — Star Witch</h2>
-        <p id="drawerArtist" class="text-xs font-mono text-fey-purple font-semibold">Artist / Illustrator: @star_illust</p>
+        <h2 id="drawerTitle" class="font-serif text-2xl font-bold text-fey-ink">Model Name</h2>
+        <p id="drawerArtist" class="text-xs font-mono text-fey-purple font-semibold">Artist / Illustrator: @artist</p>
       </div>
 
-      <!-- TAGS DE SPECS / TIER / FEATURES -->
       <div class="space-y-2">
         <span class="text-xs font-mono text-fey-ink/60 uppercase font-semibold block">// Model Rigging Specs</span>
-        <div id="drawerBadges" class="flex flex-wrap gap-2">
-          <!-- Badges injetadas via JS -->
-        </div>
+        <div id="drawerBadges" class="flex flex-wrap gap-2"></div>
       </div>
 
-      <!-- DESCRIÇÃO DETALHADA -->
       <div class="space-y-2 border-t border-fey-purple/20 pt-4 text-xs font-mono text-fey-ink/80 leading-relaxed">
         <span class="text-xs font-mono text-fey-ink/60 uppercase font-semibold block mb-1">// Rigging Highlights</span>
         <p id="drawerDescription">
-          Full body Live2D rig featuring advanced physics for hair, long dress layering, and hat toggles. Equipped with complete VBridger mouth parameters for hyper-expressive streams.
+          Model rigging details and parameters.
         </p>
       </div>
 
-      <!-- AÇÃO DE CALL TO ACTION -->
       <div class="pt-6 border-t border-fey-purple/20 flex flex-col sm:flex-row gap-3">
-        <a href="calculator.html" class="btn-gradient w-full py-3 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2">
+        <a id="drawerCalcBtn" href="calculator.html" class="btn-gradient w-full py-3 rounded-xl text-center text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2">
           <span>Calculate Similar Rig</span>
           <i class="fa-solid fa-dice-d20"></i>
         </a>
@@ -328,12 +665,12 @@
     </div>
   </div>
 
-  <!-- FOOTER ESTENDIDO (PADRONIZADO) -->
+  <!-- FOOTER PADRONIZADO -->
   <footer class="bg-fey-darkFooter text-white border-t border-fey-purple/30 pt-16 pb-12 mt-20 relative z-20 w-full">
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-zinc-800 pb-12">
       <div class="space-y-3">
         <div class="flex items-center gap-3">
-          <img src="image.png" alt="fey logo" class="w-8 h-8 object-contain rounded-full border border-fey-purple/50 bg-white p-0.5" />
+          <img src="logo.png" alt="fey logo" class="w-8 h-8 object-contain rounded-full border border-fey-purple/50 bg-white p-0.5" />
           <span class="font-serif text-base tracking-widest uppercase font-bold text-white">Fey</span>
         </div>
         <p class="text-xs font-mono text-zinc-400 leading-relaxed">
@@ -344,9 +681,9 @@
       <div class="space-y-3">
         <h4 class="font-serif text-sm font-bold tracking-wider text-fey-pink uppercase">Quick Links</h4>
         <ul class="space-y-2 text-xs font-mono text-zinc-400">
-          <li><a href="index.html" class="hover:text-fey-pink transition" data-i18n="nav_home">Home</a></li>
-          <li><a href="gallery.html" class="hover:text-fey-pink transition" data-i18n="nav_gallery">Gallery</a></li>
-          <li><a href="calculator.html" class="hover:text-fey-pink transition" data-i18n="nav_prices">Calculator & Apply</a></li>
+          <li><a href="index.html" class="hover:text-fey-pink transition">Home</a></li>
+          <li><a href="gallery.html" class="hover:text-fey-pink transition">Gallery</a></li>
+          <li><a href="calculator.html" class="hover:text-fey-pink transition">Calculator & Apply</a></li>
         </ul>
       </div>
 
@@ -368,61 +705,216 @@
   </footer>
 
   <script>
-    // SISTEMA DE TROCA DE IDIOMAS DO HEADER
-    const i18n = {
-      EN: { nav_home: "Home", nav_gallery: "Gallery", nav_prices: "Prices", btn_prices: "Prices" },
-      ES: { nav_home: "Inicio", nav_gallery: "Galería", nav_prices: "Precios", btn_prices: "Precios" },
-      JA: { nav_home: "ホーム", nav_gallery: "ギャラリー", nav_prices: "料金", btn_prices: "料金" },
-      ZH: { nav_home: "首页", nav_gallery: "画廊", nav_prices: "价格", btn_prices: "价格" }
-    };
-
-    function toggleLangDropdown(e) {
-      if (e) e.stopPropagation();
-      const menu = document.getElementById('langMenu');
-      menu.classList.toggle('hidden');
-    }
-
-    function setLanguage(lang) {
-      document.getElementById('currentLang').innerText = lang;
-      const dict = i18n[lang] || i18n.EN;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (dict[key]) el.innerText = dict[key];
-      });
-      document.getElementById('langMenu').classList.add('hidden');
-    }
-
-    // FECHA O MENU SE CLICAR FORA DELI
-    window.addEventListener('click', function(e) {
-      const container = document.getElementById('langDropdownContainer');
-      const menu = document.getElementById('langMenu');
-      if (container && !container.contains(e.target)) {
-        menu.classList.add('hidden');
-      }
-    });
-
-    // DADOS ILUSTRATIVOS DA GALERIA COM OS LINKS DOS VÍDEOS E TAGS
     const galleryData = {
       model1: {
-        title: "Astraea — Star Witch",
-        artist: "@star_illust",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ", // Substitua pelo link embed do seu vídeo (YouTube/Vimeo)
-        badges: ["Full Body ($2,000)", "Complete VBridger", "Hand Tracking", "2 Outfits", "6 Toggles", "3 Animations"],
-        description: "Full body Live2D rig featuring high-bounce hair physics, layered star-cloak motion, and full VBridger integration with cheek puffs and tongue-out tracking."
+        title: "Dobs",
+        artist: "@arklys",
+        videoUrl: "Dobswhip.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body Live2D rig featuring complete vbridger integration, fluid lean physics, alternative hairs, and tongue out expression."
       },
       model2: {
-        title: "Kaelen — Forest Paladin",
-        artist: "@forest_draws",
-        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        badges: ["Half Body ($1,500)", "iOS Mouth", "Arm Toggles", "Non-Human Parts (Ears/Tail)", "4 Expressions"],
-        description: "Half body commission optimized for gaming streams. Includes animal ear physics, arm pose swaps for sword holding, and custom iOS mouth tracking."
+        title: "Kraven",
+        artist: "@Seraphvinah",
+        videoUrl: "Kraven.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body commission equipped with multiple outfits, extensive hair variations, custom lean physics, and full vbridger setup."
       },
       model3: {
-        title: "Mimi — Bouncy Alchemist",
-        artist: "@chibi_maker",
+        title: "Cat on mars",
+        artist: "@nazuna_higurasi",
+        videoUrl: "CatOnMars.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body dynamic rig featuring complete vbridger support and expressive tongue out toggles."
+      },
+      model4: {
+        title: "Pastelix",
+        artist: "@FiendishForm",
+        videoUrl: "Freaky.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body pastel-themed Live2D model with fluid physics, complete vbridger tracking, and smooth mechanics."
+      },
+      model5: {
+        title: "Sekine",
+        artist: "@Harui9000",
+        videoUrl: "Sekinevideo.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body rig featuring complete vbridger expression mapping, clean body lean adjustments, and tongue tracking."
+      },
+      model6: {
+        title: "Neniku",
+        artist: "@bermuda_muda",
+        videoUrl: "neniku2.mp4",
+        badges: ["Full Body", "Complete vbridger", "Lean", "2 outfits", "Custom Mechanics"],
+        description: "Full body Live2D rigging optimized with advanced vbridger capabilities, dynamic lean physics, alternative outfits, and custom mechanics."
+      },
+      model7: {
+        title: "TwoInOne",
+        artist: "@madammito",
+        videoUrl: "TwoInOne.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Innovative dual-style Live2D rigging featuring complete vbridger tracking and intricate asset separation."
+      },
+      model8: {
+        title: "Nemii",
+        artist: "@ArtistHandle",
+        videoUrl: "nemii3.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Expressive Live2D rig with soft bounce hair physics, VBridger mouth tracking, and custom toggles."
+      },
+      model9: {
+        title: "Thintrovert",
+        artist: "@tigerdaze_",
+        videoUrl: "Thin.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "High-dynamic Live2D rigging crafted for streaming fluidity and interactive tracking depth."
+      },
+      model_jay_male: {
+        title: "Jay Jokers (Male)",
+        artist: "@ArtistHandle",
+        videoUrl: "jay2.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Detailed male model rig featuring complete vbridger expressions and smooth physique motion."
+      },
+      model_jay_female: {
+        title: "Jay Jokers (Female)",
+        artist: "@ArtistHandle",
+        videoUrl: "",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Upcoming female model rig with expressive tracking and dynamic parameters."
+      },
+      model10: {
+        title: "Gremlin Verna",
+        artist: "@ArtistHandle",
         videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-        badges: ["Chibi Model ($1,200)", "Controller Toggle", "8 Expressions", "High Bounce Physics"],
-        description: "Compact chibi model designed for maximum cuteness. Features a controller toggle for gaming streams and 8 quick-toggle expressions."
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Compact model optimized for high bounce, comedic expressions, and snappy motion tracking."
+      },
+      model_ozner: {
+        title: "Ozner",
+        artist: "@LaciaEverlight",
+        videoUrl: "Ozner.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "High-fidelity Live2D rig built with rich tracking dynamics and fluid physics."
+      },
+      model22: {
+        title: "Luxe",
+        artist: "@LaciaEverlight",
+        videoUrl: "luxe.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body graduation model rig featuring refined body physics, multi-layer hair, and smooth tracking."
+      },
+      model12: {
+        title: "Leudessa",
+        artist: "@ArtistHandle",
+        videoUrl: "leudessa.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Elegantly rigged Live2D model with deep Z-axis leaning and responsive facial parameters."
+      },
+      model13: {
+        title: "Glythic Mirror",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Concept rig incorporating glass and mirror particle physics alongside multi-layer asset toggles."
+      },
+      model14: {
+        title: "Kitsu",
+        artist: "@ArtistHandle",
+        videoUrl: "kitsu.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Kitsune-themed Live2D model with multi-tail physics, responsive animal ear tracking, and expressive mouth parameters."
+      },
+      model15: {
+        title: "Aya",
+        artist: "@ArtistHandle",
+        videoUrl: "aya.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full-scale model focus on high fidelity upper-body tracking, clean eye physics, and natural waist motion."
+      },
+      model16: {
+        title: "Trimventurez",
+        artist: "@ArtistHandle",
+        videoUrl: "trim.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Crisp and responsive Live2D rig with modular outfit swaps and custom arm pose mechanics."
+      },
+      model17: {
+        title: "Miabyte",
+        artist: "@ArtistHandle",
+        videoUrl: "miabyte.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Cyber-themed model featuring glow asset toggles, high precision mouth tracking, and fluid movement."
+      },
+      model19: {
+        title: "Sunshine",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Vibrant model with soft bouncy physics, complete facial parameter tracking, and interactive toggles."
+      },
+      model20: {
+        title: "Kuzi",
+        artist: "@ArtistHandle",
+        videoUrl: "Kuzi.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Balanced full-body Live2D rig built for seamless tracking stability and natural sway."
+      },
+      model21: {
+        title: "iilluminaughtii",
+        artist: "@ArtistHandle",
+        videoUrl: "iilluminaughtii.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Detailed custom commission with complex asset cutting, hair physics, and custom expression setups."
+      },
+      model11: {
+        title: "Juzo",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Detailed male model rig featuring complex clothing physics, multi-layer hair motion, and smooth tracking."
+      },
+      model23: {
+        title: "Verna",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full-scale model rig optimized for camera face-tracking precision and fluid physical reactions."
+      },
+      model24: {
+        title: "Ash",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Dynamic male rig featuring comprehensive VBridger facial tracking, outfit swaps, and responsive hair movement."
+      },
+      model25: {
+        title: "Falcy",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Fluid full body rig built with emphasis on character personality, clean physics sway, and expressive eye tracking."
+      },
+      model26: {
+        title: "Andy",
+        artist: "@ArtistHandle",
+        videoUrl: "andy.mp4",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Custom Live2D rig with clean layer separation, smooth body parameters, and multiple accessory toggles."
+      },
+      model27: {
+        title: "Near",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "High-energy rig featuring bouncy physics setups, responsive head movement, and complete mouth tracking."
+      },
+      model28: {
+        title: "SOMA",
+        artist: "@ArtistHandle",
+        videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+        badges: ["Full Body", "Complete vbridger"],
+        description: "Full body Live2D model with elaborate mechanical asset physics, wide-range body lean, and custom expressions."
       }
     };
 
@@ -432,10 +924,37 @@
 
       document.getElementById('drawerTitle').innerText = model.title;
       document.getElementById('drawerArtist').innerText = `Artist / Illustrator: ${model.artist}`;
-      document.getElementById('drawerVideo').src = model.videoUrl;
       document.getElementById('drawerDescription').innerText = model.description;
 
-      // Renderiza as badges de tags
+      const videoPlayer = document.getElementById('drawerVideoPlayer');
+      const videoIframe = document.getElementById('drawerVideoIframe');
+
+      if (model.videoUrl && model.videoUrl.endsWith('.mp4')) {
+        videoIframe.classList.add('hidden');
+        videoIframe.src = "";
+        videoPlayer.classList.remove('hidden');
+        videoPlayer.src = model.videoUrl;
+        videoPlayer.currentTime = 0;
+        videoPlayer.play().catch(() => {});
+      } else if (model.videoUrl) {
+        videoPlayer.classList.add('hidden');
+        videoPlayer.pause();
+        videoPlayer.src = "";
+        videoIframe.classList.remove('hidden');
+        videoIframe.src = model.videoUrl;
+      } else {
+        videoPlayer.classList.add('hidden');
+        videoPlayer.pause();
+        videoPlayer.src = "";
+        videoIframe.classList.add('hidden');
+        videoIframe.src = "";
+      }
+
+      const calcBtn = document.getElementById('drawerCalcBtn');
+      if (calcBtn) {
+        calcBtn.href = `calculator.html?preset=${modelId}`;
+      }
+
       const badgesContainer = document.getElementById('drawerBadges');
       badgesContainer.innerHTML = model.badges.map(b => `<span class="badge-tag">✦ ${b}</span>`).join('');
 
@@ -447,8 +966,6 @@
         backdrop.classList.remove('opacity-0');
         panel.classList.remove('translate-x-full');
       }, 10);
-
-      document.body.style.overflow = 'hidden'; // Evita scroll do fundo enquanto o drawer está aberto
     }
 
     function closeModelDrawer() {
@@ -460,8 +977,11 @@
 
       setTimeout(() => {
         backdrop.classList.add('hidden');
-        document.getElementById('drawerVideo').src = ""; // Pausa o vídeo ao fechar
-        document.body.style.overflow = 'auto';
+        const videoPlayer = document.getElementById('drawerVideoPlayer');
+        const videoIframe = document.getElementById('drawerVideoIframe');
+        videoPlayer.pause();
+        videoPlayer.src = "";
+        videoIframe.src = "";
       }, 300);
     }
   </script>
