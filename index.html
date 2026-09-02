@@ -171,7 +171,6 @@
         </div>
       </a>
 
-      <!-- NAVEGAÇÃO -->
       <nav class="hidden md:flex items-center gap-8 text-xs uppercase tracking-widest text-fey-ink/80 font-medium">
         <a href="index.html" class="hover:text-fey-purple transition font-bold text-fey-purple">Home</a>
         <a href="gallery.html" class="hover:text-fey-purple transition">Gallery</a>
@@ -199,13 +198,16 @@
           <div class="relative w-72 h-72 sm:w-96 sm:h-96 md:w-[400px] md:h-[400px] rounded-full border-2 border-dashed border-fey-purple/50 bg-white/80 p-3 flex items-center justify-center shadow-xl shadow-fey-purple/10">
             <div class="w-full h-full rounded-full bg-fey-bg overflow-hidden relative flex items-center justify-center border border-fey-purple/20">
               <video 
-                src="commspost - Trim.mp4" 
                 autoplay 
                 loop 
                 muted 
                 playsinline 
+                preload="auto"
                 class="w-full h-full object-cover object-center"
-              ></video>
+              >
+                <source src="commspost%20-%20Trim.mp4" type="video/mp4">
+                <source src="commspost - Trim.mp4" type="video/mp4">
+              </video>
             </div>
           </div>
         </div>
@@ -398,7 +400,7 @@
           </div>
 
           <!-- Clip 8: KiteHasegawa -->
-          <div class="fey-card p-4 w-[420px] sm:w-[480px] flex-shrink-0 flex-col">
+          <div class="fey-card p-4 w-[420px] sm:w-[480px] flex-shrink-0 flex flex-col">
             <div class="relative aspect-video bg-black/90 rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20">
               <iframe src="https://clips.twitch.tv/embed?clip=DifferentTemperedHorseTriHard-25DQsAHQKJV0OYe3&parent=feyfolk.github.io" frameborder="0" allowfullscreen="true" scrolling="no" height="100%" width="100%" class="w-full h-full"></iframe>
             </div>
@@ -448,6 +450,7 @@
                 muted 
                 loop 
                 playsinline 
+                preload="auto"
                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
@@ -457,7 +460,7 @@
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
           </div>
 
-          <!-- CARD 2: Kraven -->
+          <!-- CARD 2: Kraven (Reposicionado para a direita) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model2')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <video 
@@ -465,7 +468,8 @@
                 muted 
                 loop 
                 playsinline 
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+                preload="auto"
+                class="w-full h-full object-cover object-[80%_center] group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
               ></video>
@@ -482,6 +486,7 @@
                 muted 
                 loop 
                 playsinline 
+                preload="auto"
                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
@@ -499,6 +504,7 @@
                 muted 
                 loop 
                 playsinline 
+                preload="auto"
                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
@@ -508,41 +514,47 @@
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
           </div>
 
-          <!-- CARD 5: Sekine -->
+          <!-- CARD 5: Sekine (Fallback seguro para Sekinevideo.mp4 e sekinevideo.mp4) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model5')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <video 
-                src="Sekinevideo.mp4" 
                 muted 
                 loop 
                 playsinline 
+                preload="auto"
                 class="w-full h-full object-cover object-[65%_center] group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
-              ></video>
+              >
+                <source src="Sekinevideo.mp4" type="video/mp4">
+                <source src="sekinevideo.mp4" type="video/mp4">
+              </video>
             </div>
             <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Sekine</h3>
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Complete vbridger</p>
           </div>
 
-          <!-- CARD 6: Neniku -->
+          <!-- CARD 6: Neniku (Fallback para neniku2.mp4 e neniku 2.mp4) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model6')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <video 
-                src="neniku2.mp4" 
                 muted 
                 loop 
                 playsinline 
+                preload="auto"
                 class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
-              ></video>
+              >
+                <source src="neniku2.mp4" type="video/mp4">
+                <source src="neniku%202.mp4" type="video/mp4">
+              </video>
             </div>
             <h3 class="font-serif text-base text-fey-ink font-bold group-hover:text-fey-purple transition">Neniku</h3>
             <p class="text-xs text-fey-ink/70 mt-0.5">Full Body • Custom Mechanics</p>
           </div>
 
-          <!-- CARD 7: TwoInOne -->
+          <!-- CARD 7: TwoInOne (Reposicionado um pouco para a direita) -->
           <div class="fey-card p-4 w-[240px] sm:w-[270px] flex-shrink-0 group cursor-pointer" onclick="handleCardClick(event, 'model7')">
             <div class="relative aspect-[9/16] bg-fey-bg rounded-xl overflow-hidden mb-3.5 border border-fey-purple/20 flex items-center justify-center">
               <video 
@@ -550,7 +562,8 @@
                 muted 
                 loop 
                 playsinline 
-                class="w-full h-full object-cover object-center group-hover:scale-105 transition duration-300"
+                preload="auto"
+                class="w-full h-full object-cover object-[65%_center] group-hover:scale-105 transition duration-300"
                 onmouseenter="this.play()" 
                 onmouseleave="this.pause(); this.currentTime = 0;"
               ></video>
